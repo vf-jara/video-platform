@@ -34,6 +34,8 @@ export default function Login() {
                             height={138}
                         />
 
+                        <p className='text-blue-is font-semibold mt-8'>Acesse sua conta com seu e-mail e senha</p>
+
                         <form className='w-full mb-8 mt-8 lg:mb-16'>
 
 

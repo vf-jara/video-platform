@@ -12,6 +12,9 @@ module.exports = {
         'purple-is': '#7671B4',
         'blue-is': '#6D8CC7'
       },
+      backgroundImage: {
+        'home': "url('/assets/images/bg-home.png')"
+      }
     },
   },
   plugins: [],

@@ -1,12 +1,19 @@
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
+import SliderPadrão from "../components/Slider";
+
 
 export default function Home() {
+    const [cursos, setCursos] = useState([])
+    useEffect(() => {
+
+    }, [])
     return (
-        <div className="bg-[#121212]">
+        <div className="bg-[#121212] pb-16">
 
             <div className="bg-home bg-top-center bg-no-repeat bg-cover h-screen">
                 <Header />
-                <div className="container md:w-2/3 pt-52 px-20">
+                <div className="container md:w-2/3 pt-32 px-20">
                     <h1 className="text-white font-bold text-8xl mb-8">
                         As bases da IS
                     </h1>
@@ -18,6 +25,16 @@ export default function Home() {
                     </a>
                 </div>
 
+                <div className=" px-16 pt-20 w-full ">
+                    <h2 className="px-4 text-2xl font-bold text-white pb-7">Conteúdos Recentes</h2>
+                    <SliderPadrão cursos={cursos} />
+                </div>
+
+            </div>
+
+            <div className="pt-40 px-16">
+                <h2 className="px-4 text-2xl font-bold text-white pb-7">Cursos Completos</h2>
+                <SliderPadrão cursos={cursos} />
             </div>
 
         </div>

@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import SliderPadrão from "../components/Slider";
 
-
 export default function Home() {
     const [cursos, setCursos] = useState([])
     useEffect(() => {
 
+        /**
+         * TO-DO
+         * Regras de API para consumo na Homepage
+         * 
+         */
     }, [])
     return (
         <div className="bg-[#121212] pb-16">

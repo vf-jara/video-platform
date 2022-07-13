@@ -2,7 +2,7 @@ import React from "react";
 import Img from "react-cool-img";
 import Slider from "react-slick";
 
-export default function SliderPadrão({
+export default function SliderPadrao({
     cursos
 }) {
     var settings = {

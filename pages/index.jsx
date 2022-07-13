@@ -14,7 +14,7 @@ export default function Home({ session, courses }) {
     return (
         <div className="bg-[#000303] pb-16">
 
-            <div className="bg-home bg-top-center bg-no-repeat bg-cover min-h-screen">
+            <div className="bg-home bg-top-center bg-no-repeat bg-cover">
                 <Header />
                 <div className="md:w-2/3 pt-32 px-8 md:px-20 2xl:pb-20">
                     <h1 className="text-white font-bold text-5xl md:text-8xl pb-8">

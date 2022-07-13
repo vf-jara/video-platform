@@ -56,7 +56,6 @@ const options = {
       }
       return true // Do different verification for other providers that don't have `email_verified`
     },
-    
     async session({ session, token }) {
       // Send properties to the client, like an access_token from a provider.
       session.accessToken = token.accessToken
@@ -81,6 +80,7 @@ const options = {
       return Promise.resolve(token);
     },
   },
+  secret: process.env.JWT_SECRET,
 };
 
 const Auth = (req, res) => NextAuth(req, res, options);

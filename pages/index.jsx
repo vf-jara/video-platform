@@ -1,20 +1,18 @@
+import { getSession } from "next-auth/react";
+import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
-import SliderPadrão from "../components/Slider";
+import SliderPadrao from "../components/Slider";
+import { homeInfo } from "../lib/api";
 
-export default function Home() {
-    const [cursos, setCursos] = useState([])
+export default function Home({session, courses}) {
+    const [cursos, setCursos] = useState([]);
+
     useEffect(() => {
-
-        /**
-         * TO-DO
-         * Regras de API para consumo na Homepage
-         * 
-         */
+      setCursos(courses);
     }, [])
     return (
         <div className="bg-[#121212] pb-16">
-
             <div className="bg-home bg-top-center bg-no-repeat bg-cover h-screen">
                 <Header />
                 <div className="container md:w-2/3 pt-32 px-20">
@@ -31,17 +29,39 @@ export default function Home() {
 
                 <div className=" px-16 pt-20 w-full ">
                     <h2 className="px-4 text-2xl font-bold text-white pb-7">Conteúdos Recentes</h2>
-                    <SliderPadrão cursos={cursos} />
+                    {cursos && (
+                      <SliderPadrao cursos={cursos} />
+                    )}
                 </div>
 
             </div>
 
             <div className="pt-40 px-16">
                 <h2 className="px-4 text-2xl font-bold text-white pb-7">Cursos Completos</h2>
-                <SliderPadrão cursos={cursos} />
+                {cursos && (
+                  <SliderPadrao cursos={cursos} />
+                )}
             </div>
 
         </div>
-
     )
 }
+
+export const getServerSideProps = async ({ req }) => {
+    const session = await getSession({ req });
+    if(!session){
+      return{
+        redirect: {
+          destination: '/login?error=notauthorized'
+        }
+      }
+    }else{
+      const courses = await homeInfo(session);
+      return {
+        props: {
+          session,
+          courses: courses.data.courses.data
+        },
+      }
+    }
+  };

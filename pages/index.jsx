@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
-import SliderPadrão from "../components/Slider";
+import SliderPadrao from "../components/Slider";
 
 
 export default function Home() {
@@ -27,14 +27,14 @@ export default function Home() {
 
                 <div className="px-5 md:px-16 pt-20 w-full">
                     <h2 className="px-4 text-2xl font-bold text-white pb-7">Conteúdos Recentes</h2>
-                    <SliderPadrão cursos={cursos} />
+                    <SliderPadrao cursos={cursos} />
                 </div>
 
             </div>
 
             <div className="pt-16 px-5 md:px-16 w-full">
                 <h2 className="px-4 text-2xl font-bold text-white pb-7">Cursos Completos</h2>
-                <SliderPadrão cursos={cursos} />
+                <SliderPadrao cursos={cursos} />
             </div>
 
         </div>

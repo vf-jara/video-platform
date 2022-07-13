@@ -1,5 +1,6 @@
 import Img from "react-cool-img";
 import Link from 'next/link'
+import { MagnifyingGlass, BellSimple, UserCircle } from "phosphor-react";
 
 export default function Header() {
     const Links = [
@@ -9,8 +10,8 @@ export default function Header() {
         { name: "Artigos", link: "#artigos" },
     ]
     return (
-        <div className="px-20 py-5 w-full bg-gradient-to-b from-[rgb(18,18,18,0.5)] to-[rgb(18,18,18,0.01)] flex">
-            <div className="mr-10">
+        <div className="px-20 py-5 w-full bg-gradient-to-b from-[rgb(18,18,18,0.5)] to-[rgb(18,18,18,0.01)] flex items-center">
+            <div className="mr-10 flex-initial">
                 <Link href="/">
                     <a>
                         <Img
@@ -20,7 +21,7 @@ export default function Header() {
                     </a>
                 </Link>
             </div>
-            <div>
+            <div className="flex flex-grow">
                 <ul className="flex pt-1">
                     {
                         Links.map((link) => (
@@ -33,8 +34,16 @@ export default function Header() {
                     }
                 </ul>
             </div>
-            <div>
-
+            <div className="mx-3">
+                <BellSimple size={32} weight="light" className="text-white" />
+            </div>
+            <div className="flex relative transition-all mx-3">
+                <MagnifyingGlass size={32} weight="light" className="absolute left-0 -bottom-1 transition-all text-white" />
+                <input type="text" name="search" placeholder="" className="bg-transparent text-white w-10 z-0 focus:w-full transition-all focus:border-b delay-300 ring-0 outline-none pl-10">
+                </input>
+            </div>
+            <div className="border rounded-full ml-3">
+                <UserCircle size={32} weight="light" />
             </div>
         </div>
     )

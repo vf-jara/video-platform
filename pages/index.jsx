@@ -27,14 +27,14 @@ export default function Home() {
 
                 <div className=" px-16 pt-20 w-full ">
                     <h2 className="px-4 text-2xl font-bold text-white pb-7">Conteúdos Recentes</h2>
-                    <SliderPadrão cursos={cursos} />
+                    <SliderPadrao cursos={cursos} />
                 </div>
 
             </div>
 
             <div className="pt-40 px-16">
                 <h2 className="px-4 text-2xl font-bold text-white pb-7">Cursos Completos</h2>
-                <SliderPadrão cursos={cursos} />
+                <SliderPadrao cursos={cursos} />
             </div>
 
         </div>

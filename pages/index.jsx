@@ -5,11 +5,11 @@ import Header from "../components/Header";
 import SliderPadrao from "../components/Slider";
 import { homeInfo } from "../lib/api";
 
-export default function Home({session, courses}) {
+export default function Home({ session, courses }) {
     const [cursos, setCursos] = useState([]);
 
     useEffect(() => {
-      setCursos(courses);
+        setCursos(courses);
     }, [])
     return (
         <div className="bg-[#000303] pb-16">
@@ -31,7 +31,7 @@ export default function Home({session, courses}) {
                 <div className="px-5 md:px-16 pt-20 w-full">
                     <h2 className="px-4 text-2xl font-bold text-white pb-7">Conteúdos Recentes</h2>
                     {cursos && (
-                      <SliderPadrao cursos={cursos} />
+                        <SliderPadrao cursos={cursos} />
                     )}
                 </div>
 
@@ -40,7 +40,8 @@ export default function Home({session, courses}) {
             <div className="pt-16 px-5 md:px-16 w-full">
                 <h2 className="px-4 text-2xl font-bold text-white pb-7">Cursos Completos</h2>
                 {cursos && (
-                  <SliderPadrao cursos={cursos} />
+                    <SliderPadrao cursos={cursos} />
+
                 )}
             </div>
 
@@ -50,19 +51,22 @@ export default function Home({session, courses}) {
 
 export const getServerSideProps = async ({ req }) => {
     const session = await getSession({ req });
-    if(!session){
-      return{
-        redirect: {
-          destination: '/login?error=notauthorized'
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/login?error=notauthorized'
+            }
         }
-      }
-    }else{
-      const courses = await homeInfo(session);
-      return {
-        props: {
-          session,
-          courses: courses.data.courses.data
-        },
-      }
+    } else {
+        const courses = await homeInfo(session);
+        {
+            console.log(courses.data)
+        }
+        return {
+            props: {
+                session,
+                courses: courses.data
+            },
+        }
     }
-  };
+};

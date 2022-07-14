@@ -35,11 +35,20 @@ module.exports = {
               opacity: '0',
               transform: 'translateY(-10px)'
           },
+      },
+      'spin':{
+        'from':{
+          transform: 'rotate(0deg)'
+        },
+        'to': {
+          transform: 'rotate(360deg)'
+        }
       }
     },
     animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out',
-        'fade-out-up': 'fade-out-up 0.5s ease-out'
+        'fade-out-up': 'fade-out-up 0.5s ease-out',
+        'animate-spin': 'spin 1s linear infinite'
     }
     },
   },

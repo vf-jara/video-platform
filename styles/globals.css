@@ -33,3 +33,12 @@ body {
   background-size: 100% 3px;
   background-position: 0 100%;
 }
+
+
+/* Slider */
+@media(max-width: 400px){
+.slick-list {
+  padding: 0 20% 0 0 !important;
+}
+
+}

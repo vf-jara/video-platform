@@ -29,12 +29,12 @@ export default function Header() {
                 </Link>
             </div>
             <div className="flex flex-grow">
-                <ul className="flex pt-1">
+                <ul className="block space-x-5">
                     {
                         Links.map((link) => (
-                            <li key={link.name} className="pl-10 ">
+                            <li key={link.name} className="space-x-4 px-4 inline-block">
                                 <Link href={link.link} className="">
-                                    <a className="text-white text-lg font-normal hover:text-xl hover:font-semibold transition-all ease-in-out delay-25">{link.name}</a>
+                                    <a className=" link-underline link-underline-black hover:underline-offset-4 text-white text-base font-normal hover:transition-all transition-all ease-in-out delay-25">{link.name}</a>
                                 </Link>
                             </li>
                         ))
@@ -42,10 +42,10 @@ export default function Header() {
                 </ul>
             </div>
             <div className="mx-3">
-                <BellSimple size={32} weight="light" className="text-white" />
+                <BellSimple size={24} weight="fill" className="text-white hover:text-orange-is transition-all"  />
             </div>
             <div className="flex relative transition-all mx-3">
-                <MagnifyingGlass size={32} weight="light" className="absolute left-0 -bottom-1 transition-all text-white" />
+                <MagnifyingGlass size={24} className="absolute left-0 text-white hover:text-orange-is transition-all" />
                 <input type="text" name="search" placeholder="" className="bg-transparent text-white w-10 z-0 focus:w-full transition-all focus:border-b delay-300 ring-0 outline-none pl-10">
                 </input>
             </div>

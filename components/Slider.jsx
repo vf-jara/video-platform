@@ -16,6 +16,26 @@ export default function SliderPadrao({
         focusOnSelect: false,
         responsive: [
             {
+                breakpoint: 2048,
+                settings: {
+                    slidesToShow: 7,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    adaptiveHeight: true
+
+                }
+            },
+            {
+                breakpoint: 1920,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    adaptiveHeight: true
+
+                }
+            },
+            {
                 breakpoint: 1441,
                 settings: {
                     slidesToShow: 5,

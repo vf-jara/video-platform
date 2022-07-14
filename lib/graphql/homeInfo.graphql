@@ -1,0 +1,21 @@
+query homeInfo {
+  homepage {
+    data {
+      attributes {
+        heroTitle
+        heroDescription
+        heroImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        heroButtonText
+        heroButtonLink
+        seoTitle
+        seoDescription
+      }
+    }
+  }
+}

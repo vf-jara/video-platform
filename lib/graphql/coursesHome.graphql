@@ -1,0 +1,35 @@
+query coursesHome {
+  courses(sort: "updatedAt:desc", pagination: { limit: 25 }) {
+    data {
+      id
+      attributes {
+        isActive: active
+        title
+        description
+        coverH: thumbnailH {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        coverV: thumbnailV {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        slug
+        categories: categories {
+          data {
+            id
+            attributes {
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}

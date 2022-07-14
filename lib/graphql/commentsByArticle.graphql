@@ -1,0 +1,40 @@
+query commentsByArticle {
+  articles(filters: { slug: { eq: "" } }) {
+    data {
+      id
+      attributes {
+        comments {
+          data {
+            attributes {
+              comment
+              createdAt
+              user {
+                data {
+                  id
+                  attributes {
+                    username
+                  }
+                }
+              }
+              replies {
+                data {
+                  attributes {
+                    comment
+                    user {
+                      data {
+                        id
+                        attributes {
+                          username
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

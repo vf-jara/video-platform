@@ -1,0 +1,64 @@
+# Write your query or mutation here
+query lessonBySlug {
+  lessons(filters: { slug: { eq: "lesson-01" } }) {
+    data {
+      id
+      attributes {
+        title
+        slug
+        description
+        content {
+          __typename
+          ... on ComponentContentsArticle {
+            id
+            content
+          }
+          ... on ComponentContentsVideoLocal {
+            id
+            file {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+          ... on ComponentContentsVideoExternal {
+            id
+            url
+          }
+          ... on ComponentContentsImage {
+            id
+            file {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+          ... on ComponentContentsPdf {
+            id
+            file {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+          ... on ComponentContentsAudio {
+            id
+            file {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

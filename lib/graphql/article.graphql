@@ -1,0 +1,12 @@
+query article {
+  articles(filters: { slug: { eq: "" } }) {
+    data {
+      id
+      attributes {
+        title
+        description
+        content
+      }
+    }
+  }
+}

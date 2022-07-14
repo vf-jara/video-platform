@@ -1,0 +1,37 @@
+query articlesHome {
+  articles {
+    data {
+      id
+      attributes {
+        title
+        description
+        slug
+        thumbnailH {
+          data {
+            attributes {
+              url
+              previewUrl
+            }
+          }
+        }
+        thumbnailV {
+          data {
+            attributes {
+              url
+              previewUrl
+            }
+          }
+        }
+        categories {
+          data {
+            id
+            attributes {
+              title
+            }
+          }
+        }
+        content
+      }
+    }
+  }
+}

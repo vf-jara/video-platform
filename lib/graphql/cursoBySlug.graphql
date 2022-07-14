@@ -1,0 +1,28 @@
+query cursoBySlug {
+  courses(filters: { slug: { eq: "title-course" } }) {
+    data {
+      id
+      attributes {
+        isActive: active
+        slug
+        contents {
+          ... on ComponentLessonsLesson {
+            id
+            lesson {
+              data {
+                id
+                attributes {
+                  slug
+                  title
+                  content {
+                    __typename
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

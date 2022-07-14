@@ -1,0 +1,40 @@
+# Write your query or mutation here
+query commentsByLesson {
+  lessons(filters: { slug: { eq: "lesson-01" } }) {
+    data {
+      attributes {
+        comments {
+          data {
+            attributes {
+              comment
+              createdAt
+              user {
+                data {
+                  id
+                  attributes {
+                    username
+                  }
+                }
+              }
+              replies {
+                data {
+                  attributes {
+                    comment
+                    user {
+                      data {
+                        id
+                        attributes {
+                          username
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

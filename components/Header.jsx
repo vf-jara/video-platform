@@ -75,7 +75,7 @@ export default function Header() {
                                                 type="submit"
                                                 className={classNames(
                                                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                    'block w-full text-left px-4 py-2 text-base text-center'
+                                                    'block w-full px-4 py-2 text-base text-center'
                                                 )}
                                             >
                                                 Sair

@@ -59,14 +59,12 @@ export const getServerSideProps = async ({ req }) => {
             }
         }
     } else {
-        const courses = await homeInfo(session);
-        {
-            console.log(courses.data)
-        }
+        const home = await homeInfo(session);
         return {
             props: {
                 session,
-                courses: courses.data
+                courses: home.data.courses.data,
+                homepageInfo: home.data.homepage.data.attributes
             },
         }
     }

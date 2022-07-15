@@ -6,10 +6,10 @@ import { Menu, Transition } from '@headlessui/react'
 
 export default function Header() {
     const Links = [
-        { name: "Home", link: "/" },
-        { name: "Cursos", link: "#cursos" },
-        { name: "Podcasts", link: "#podcasts" },
-        { name: "Artigos", link: "#artigos" },
+        { name: "Home", link: "/", id: 1 },
+        // { name: "Cursos", link: "#cursos" },
+        // { name: "Podcasts", link: "#podcasts" },
+        // { name: "Artigos", link: "#artigos" },
     ]
 
     function classNames(...classes) {
@@ -54,7 +54,7 @@ export default function Header() {
                                     <div className="py-1">
                                         {
                                             Links.map((link) => (
-                                                <Menu.Item>
+                                                <Menu.Item key={link.id}>
                                                     {({ active }) => (
                                                         <button className={classNames(
                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',

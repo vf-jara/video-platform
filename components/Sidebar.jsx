@@ -9,7 +9,7 @@ export default function Sidebar() {
                     Playlist
                 </span>
             </div>
-            <div className="flex flex-col gap-8 p-3">
+            <div className="flex flex-col gap-5 p-3">
                 <Lesson />
             </div>
         </aside>

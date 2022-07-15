@@ -2,11 +2,29 @@
 import { FolderOpen } from "phosphor-react";
 import Link from "next/link";
 import Img from "react-cool-img";
+import Plyr from "plyr-react"
+import "plyr-react/plyr.css"
 
 
 export default function Video() {
+    const plyrProps = {
+        source: {
+            type: "video",
+            sources: [
+                {
+                    src: "10wb6KbdvLI",
+                    provider: "youtube"
+                }
+            ]
+        },
+        options: {
+        }
+
+    }
+
+
     return (
-        <div className="flex-1">
+        <div className="flex-1 bg-slate-100">
             <div className="flex">
                 <div className="py-5 px-7 bg-purple-is">
                     <Link href="/">
@@ -23,13 +41,13 @@ export default function Video() {
                     Título do Conteúdo
                 </div>
             </div>
-            <div className="bg-slate-500 flex justify-center">
+            <div className="bg-slate-100 flex justify-center">
                 <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
-                    video
+                    <Plyr {...plyrProps}/>
                 </div>
             </div>
 
-            <div className="p-8 max-w-[1100px] mx-auto shadow-lg">
+            <div className="p-8 max-w-[1100px] bg-white mx-auto shadow-lg">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
                     <div className="flex-1 flex-col">
                         <div className="grid grid-cols-1 md:grid-cols-2">

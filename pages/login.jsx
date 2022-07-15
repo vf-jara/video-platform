@@ -77,10 +77,10 @@ export default function Login() {
           className="object-cover absolute h-full"
         />
       </div>
-      <div className="md:col-span-4 h-screen px-5 md:px-0 align-middle">
+      <div className="md:col-span-4 h-screen px-5 md:px-5 align-middle">
         <div className="w-full flex items-center justify-center">
-          <div className="w-full md:w-[400px] h-screen flex flex-col justify-center items-center align-middle">
-            <Image src="/assets/images/logo.png" width={136} height={138} />
+          <div className="w-full h-screen flex flex-col justify-center items-center align-middle">
+            <Img src="/assets/images/logo.png" />
             <p className="text-lg text-blue-is font-semibold mt-8">
               Acesse sua conta com seu e-mail e senha
             </p>

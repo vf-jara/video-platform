@@ -24,7 +24,7 @@ export default function Home({ session, courses, homepageInfo }) {
             <div className="bg-[#000303] pb-16">
                 <div className="bg-top-center bg-no-repeat bg-cover" style={{backgroundImage: `url(${homepageInfo?.heroImage?.data?.attributes?.url})`}}>
                     <Header />
-                    <div className="md:w-2/3 lg:pt-32 pt-16 px-8 md:px-20 2xl:pb-20">
+                    <div className="md:w-2/3 2xl:pt-32 pt-16 px-8 md:px-20 2xl:pb-20">
                         <h1 className="text-white font-bold text-5xl md:text-6xl pb-4">
                             {homepageInfo?.heroTitle || '[Hero Title] As bases da IS'}
                         </h1>

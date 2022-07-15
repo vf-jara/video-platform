@@ -8,12 +8,8 @@ import { homeInfo } from "../lib/api";
 import { ArrowRight } from "phosphor-react";
 
 export default function Home({ session, courses, homepageInfo }) {
+    console.log("Cursos:", courses);
     const router = useRouter();
-    const [cursos, setCursos] = useState([]);
-
-    useEffect(() => {
-        setCursos(courses);
-    }, [])
     return (
         <>
             <Head>
@@ -31,7 +27,7 @@ export default function Home({ session, courses, homepageInfo }) {
                         <p className="text-white text-base md:text-lg lg:text-xl py-5 lg:w-4/5 mb-12">
                             {homepageInfo?.heroDescription || '[Hero Description] Lorem Ipsum'}
                         </p>
-                        <button 
+                        <button
                             className="text-base flex align-middle ease-in-out hover:-translate-y-1 hover:scale-105 duration-300 text-white px-10 pt-[16px] pb-[17px] bg-orange-is hover:bg-white hover:text-orange-is justify-center rounded-md font-medium"
                             onClick={() => {router.push(homepageInfo?.heroButtonLink || '/')}}
                         >
@@ -42,8 +38,8 @@ export default function Home({ session, courses, homepageInfo }) {
 
                     <div className="px-5 md:px-16 pt-16 w-full">
                         <h2 className="px-4 text-2xl font-bold text-white pb-7">Conteúdos Recentes</h2>
-                        {cursos && (
-                            <SliderPadrao cursos={cursos} />
+                        {courses && (
+                            <SliderPadrao cursos={courses} />
                         )}
                     </div>
 
@@ -51,8 +47,8 @@ export default function Home({ session, courses, homepageInfo }) {
 
                 <div className="pt-16 px-5 md:px-16 w-full">
                     <h2 className="px-4 text-2xl font-bold text-white pb-7">Cursos Completos</h2>
-                    {cursos && (
-                        <SliderPadrao cursos={cursos} />
+                    {courses && (
+                        <SliderPadrao cursos={courses} />
 
                     )}
                 </div>
@@ -64,7 +60,7 @@ export default function Home({ session, courses, homepageInfo }) {
 
 export const getServerSideProps = async ({ req }) => {
     const session = await getSession({ req });
-    console.log("\n\n\nSession:", session);
+    // console.log("\n\n\nSession:", session);
     if (!session) {
         return {
             redirect: {

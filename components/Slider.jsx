@@ -1,10 +1,10 @@
+import Link from "next/link";
 import React from "react";
 import Img from "react-cool-img";
 import Slider from "react-slick";
 
-export default function SliderPadrao({
-    cursos
-}) {
+export default function SliderPadrao({cursos}) {
+    console.log("Slider:", cursos);
     var settings = {
         dots: false,
         arrows: false,
@@ -62,51 +62,17 @@ export default function SliderPadrao({
     };
     return (
         <Slider {...settings}>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card1.png"
-                />
-            </div>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card2.png"
-                />
-            </div>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card1.png"
-                />
-            </div>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card2.png"
-                />
-            </div>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card1.png"
-                />
-            </div>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card2.png"
-                />
-            </div>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card1.png"
-                />
-            </div>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card2.png"
-                />
-            </div>
-            <div className="px-3 outline-none">
-                <Img
-                    src="/assets/images/card1.png"
-                />
-            </div>
+        {cursos.map((curso) => (
+            <Link href={`/${curso.attributes.slug}`} key={curso.attributes.id}>
+                <a>
+                    <div className="px-3 outline-none">
+                        <Img className="rounded-lg"
+                            src={curso?.attributes?.coverV?.data?.attributes?.url}
+                        />
+                    </div>
+                </a>
+            </Link>
+        ))}
         </Slider>
     );
 }

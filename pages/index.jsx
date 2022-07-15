@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import SliderPadrao from "../components/Slider";
 import { homeInfo } from "../lib/api";
+import { ArrowRight } from "phosphor-react";
 
 export default function Home({ session, courses, homepageInfo }) {
     const router = useRouter();

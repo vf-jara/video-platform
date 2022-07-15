@@ -10,46 +10,47 @@ module.exports = {
         'orange-is': '#F26321',
         'orange-hv-is': '#D94E0E',
         'purple-is': '#7671B4',
-        'blue-is': '#6D8CC7'
+        'blue-is': '#6D8CC7',
+        'green-is':'#88BEBE',
       },
       backgroundImage: {
         'home': "url('/assets/images/bg-home.png')"
       },
       keyframes: {
         'fade-in-down': {
-            '0%': {
-                opacity: '0',
-                transform: 'translateY(-10px)'
-            },
-            '100%': {
-                opacity: '1',
-                transform: 'translateY(0)'
-            },
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
         },
         'fade-out-up': {
           '100%': {
-              opacity: '1',
-              transform: 'translateY(0)'
+            opacity: '1',
+            transform: 'translateY(0)'
           },
           '0%': {
-              opacity: '0',
-              transform: 'translateY(-10px)'
+            opacity: '0',
+            transform: 'translateY(-10px)'
           },
-      },
-      'spin':{
-        'from':{
-          transform: 'rotate(0deg)'
         },
-        'to': {
-          transform: 'rotate(360deg)'
+        'spin': {
+          'from': {
+            transform: 'rotate(0deg)'
+          },
+          'to': {
+            transform: 'rotate(360deg)'
+          }
         }
-      }
-    },
-    animation: {
+      },
+      animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out',
         'fade-out-up': 'fade-out-up 0.5s ease-out',
         'animate-spin': 'spin 1s linear infinite'
-    }
+      }
     },
   },
   plugins: [],

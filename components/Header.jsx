@@ -19,9 +19,9 @@ export default function Header({name, email}) {
     ];
 
     const notifications = [
-        // {id: 1, title: "título", message: "Aqui vai a notificação.", readed: true},
-        // {id: 2, title: "título", message: "Aqui vai a notificação.", readed: false},
-        // {id: 3, title: "título", message: "Aqui vai a notificação.", readed: false},
+        {id: 1, title: "título", message: "Aqui vai a notificação.", readed: true},
+        {id: 2, title: "título", message: "Aqui vai a notificação.", readed: false},
+        {id: 3, title: "título", message: "Aqui vai a notificação.", readed: false},
     ]
 
     useEffect(() => {

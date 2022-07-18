@@ -12,7 +12,7 @@ export default function Video() {
             type: "video",
             sources: [
                 {
-                    src: "10wb6KbdvLI",
+                    src: "GksjL2sReSY",
                     provider: "youtube"
                 }
             ]

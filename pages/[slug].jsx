@@ -6,14 +6,13 @@ import { cursoInfo, getPaths } from "../lib/api";
 import { getSession } from "next-auth/react";
 
 export default function Player({slug, curso}) {
-    console.log("Curso:", curso);
     const [open, setOpen] = useState(false)
     return (
         <div className="flex flex-col min-h-screen">
             <div className="absolute z-50 top-3 right-4 lg:hidden">
                 <button onClick={() => setOpen(!open)}>
                 {
-                    !open? 
+                    !open?
                     <List
                         size={34}
                         className="text-white"
@@ -25,7 +24,6 @@ export default function Player({slug, curso}) {
                         className="text-white"
                         weight="bold"
                     />
-
                 }
                 </button>
             </div>

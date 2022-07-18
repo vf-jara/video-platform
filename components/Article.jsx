@@ -1,60 +1,8 @@
-
-import { FolderOpen } from "phosphor-react";
 import Link from "next/link";
+import { FolderOpen } from "phosphor-react";
 import Img from "react-cool-img";
-import Plyr from "plyr-react"
-import "plyr-react/plyr.css"
 
-
-export default function Video({content, type}) {
-    let plyrProps;
-    if(type === "ComponentContentsVideoExternal"){
-        plyrProps = {
-            source: {
-                type: "video",
-                sources: [
-                    {
-                        src: "GksjL2sReSY",
-                        provider: "youtube"
-                    }
-                ]
-            }
-        }
-    }else if(type === "ComponentContentsVideoLocal"){
-        plyrProps = {
-            source: {
-                type: "video",
-                title: content?.attributes?.title,
-                sources: [
-                    {
-                        src: content?.attributes?.content[0]?.file?.data?.attributes?.url,
-                        type: content?.attributes?.content[0]?.file?.data?.attributes?.mime,
-                        size: 720,
-                    },
-                    {
-                        src: content?.attributes?.content[0]?.file?.data?.attributes?.url,
-                        type: content?.attributes?.content[0]?.file?.data?.attributes?.mime,
-                        size: 1080,
-                    },
-                ],
-                controls: ['play-large']
-            }
-        }
-    }else if(type === "ComponentContentsAudio"){
-        plyrProps = {
-            source: {
-                type: "audio",
-                title: content?.attributes?.title,
-                sources: [
-                    {
-                        src: content?.attributes?.content[0]?.file?.data?.attributes?.url,
-                        type: content?.attributes?.content[0]?.file?.data?.attributes?.mime,
-                    }
-                ]
-            }
-        }
-    }
-
+export default function Article({content}) {
     return (
         <div className="flex-1 bg-slate-100">
             <div className="flex">
@@ -75,7 +23,7 @@ export default function Video({content, type}) {
             </div>
             <div className="bg-slate-100 flex justify-center">
                 <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
-                    <Plyr {...plyrProps}/>
+                    <h1>Artigo</h1>
                 </div>
             </div>
 

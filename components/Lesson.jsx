@@ -1,17 +1,21 @@
 import Link from "next/link";
 import { Article, Headphones, MonitorPlay, Play } from "phosphor-react";
 
-export default function Lesson(lessons, course) {
-    console.log("Course Slug:", course);
+export default function Lesson(props) {
+    const lessons = props.lessons;
+    const course = props.course;
   return (
     <>
-      {lessons.lessons !== [] &&
-        lessons?.lessons?.map((lesson) =>
+      {lessons !== [] &&
+        lessons?.map((lesson) =>
           lesson?.lesson?.data?.attributes?.content[0]?.__typename ===
           "ComponentContentsArticle" ? (
             <Link
-              href={`${course}/lesson/${lesson?.lesson?.data?.attributes?.slug}`}
-              className="group"
+                href={{
+                    pathname: '/[slug]/lesson/[lesson]',
+                    query: { slug: course, lesson: lesson?.lesson?.data?.attributes?.slug},
+                }}
+              className="group" key={lesson.lesson.data.id}
             >
               <a>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
@@ -28,8 +32,12 @@ export default function Lesson(lessons, course) {
           ) : lesson?.lesson?.data?.attributes?.content[0]?.__typename ===
             "ComponentContentsVideoLocal" ? (
             <Link
-              href={`${course}/lesson/${lesson?.lesson?.data?.attributes?.slug}`}
-              className="group"
+              href={{
+                    pathname: '/[slug]/lesson/[lesson]',
+                    query: { slug: course, lesson: lesson?.lesson?.data?.attributes?.slug},
+                }}
+              className="group" key={lesson.lesson.data.id}
+              replace
             >
               <a>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
@@ -47,8 +55,12 @@ export default function Lesson(lessons, course) {
           ) : lesson?.lesson?.data?.attributes?.content[0]?.__typename ===
             "ComponentContentsVideoExternal" ? (
             <Link
-              href={`${course}/lesson/${lesson?.lesson?.data?.attributes?.slug}`}
-              className="group"
+              href={{
+                    pathname: '/[slug]/lesson/[lesson]',
+                    query: { slug: course, lesson: lesson?.lesson?.data?.attributes?.slug},
+                }}
+              className="group" key={lesson.lesson.data.id}
+              replace
             >
               <a>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
@@ -66,8 +78,12 @@ export default function Lesson(lessons, course) {
           ) : lesson?.lesson?.data?.attributes?.content[0]?.__typename ===
             "ComponentContentsImage" ? (
             <Link
-              href={`${course}/lesson/${lesson?.lesson?.data?.attributes?.slug}`}
-              className="group"
+              href={{
+                    pathname: '/[slug]/lesson/[lesson]',
+                    query: { slug: course, lesson: lesson?.lesson?.data?.attributes?.slug},
+                }}
+              className="group" key={lesson.lesson.data.id}
+              replace
             >
               <a>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
@@ -84,8 +100,12 @@ export default function Lesson(lessons, course) {
           ) : lesson?.lesson?.data?.attributes?.content[0]?.__typename ===
             "ComponentContentsPdf" ? (
             <Link
-              href={`${course}/lesson/${lesson?.lesson?.data?.attributes?.slug}`}
-              className="group"
+              href={{
+                    pathname: '/[slug]/lesson/[lesson]',
+                    query: { slug: course, lesson: lesson?.lesson?.data?.attributes?.slug},
+                }}
+              className="group" key={lesson.lesson.data.id}
+              replace
             >
               <a>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
@@ -102,8 +122,12 @@ export default function Lesson(lessons, course) {
           ) : lesson?.lesson?.data?.attributes?.content[0]?.__typename ===
             "ComponentContentsAudio" ? (
             <Link
-              href={`${course}/lesson/${lesson?.lesson?.data?.attributes?.slug}`}
-              className="group"
+              href={{
+                    pathname: '/[slug]/lesson/[lesson]',
+                    query: { slug: course, lesson: lesson?.lesson?.data?.attributes?.slug},
+                }}
+              className="group" key={lesson.lesson.data.id}
+              replace
             >
               <a>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
@@ -119,8 +143,12 @@ export default function Lesson(lessons, course) {
             </Link>
           ) : (
             <Link
-              href={`${course}/lesson/${lesson?.lesson?.data?.attributes?.slug}`}
-              className="group"
+              href={{
+                    pathname: '/[slug]/lesson/[lesson]',
+                    query: { slug: course, lesson: lesson?.lesson?.data?.attributes?.slug},
+                }}
+              className="group" key={lesson.lesson.data.id}
+              replace
             >
               <a>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
@@ -136,7 +164,7 @@ export default function Lesson(lessons, course) {
             </Link>
           )
         )}
-      {/* <Link href="#" className="group">
+      {/* <Link href="#" className="group" key={lesson.lesson.data.id}>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
                     <div className="rounded-full bg-orange-100 p-2 text-orange-is">
                         <MonitorPlay size={32} weight="bold" />
@@ -149,7 +177,7 @@ export default function Lesson(lessons, course) {
                 </div>
             </Link>
 
-            <Link href="#" className="group">
+            <Link href="#" className="group" key={lesson.lesson.data.id}>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
                     <div className="rounded-full bg-orange-100 p-2 text-orange-is">
                         <Headphones size={32} weight="fill" />
@@ -160,7 +188,7 @@ export default function Lesson(lessons, course) {
                     </strong>
                 </div>
             </Link>
-            <Link href="#" className="group">
+            <Link href="#" className="group" key={lesson.lesson.data.id}>
                 <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
                     <div className="rounded-full bg-orange-100 p-2 text-orange-is">
                         <Article size={32} weight="fill" />

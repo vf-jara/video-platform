@@ -30,7 +30,7 @@ export default function Player({slug, curso}) {
             <div className="flex flex-1">
                 <Video />
                 <div className={`lg:flex absolute lg:static lg:z-auto lg:w-auto lg:h-auto ${open ? 'flex right-0 min-h-screen bg-white z-40' : 'hidden'} transition-all ease-in-out duration-500`}>
-                    <Sidebar curso={curso[0]?.attributes?.contents} />
+                    <Sidebar lessons={curso[0]?.attributes?.contents} course={slug} />
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@ export default function Player({slug, curso}) {
 }
 
 export async function getServerSideProps({req, query }){
-    const {slug} = query ;
+    const {slug} = query;
     const session = await getSession({ req });
     if (!session) {
         return {

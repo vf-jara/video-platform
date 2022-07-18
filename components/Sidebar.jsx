@@ -1,7 +1,6 @@
 import Lesson from "./Lesson"
 
-export default function Sidebar({curso}) {
-    console.log("Curso Lessons", curso)
+export default function Sidebar({lessons, course}) {
     return (
         <aside className="w-[385px] shadow-lg">
             <div className="bg-orange-is p-6">
@@ -10,7 +9,7 @@ export default function Sidebar({curso}) {
                 </span>
             </div>
             <div className="flex flex-col gap-5 p-3">
-                <Lesson lessons={curso} />
+                <Lesson lessons={lessons} course={course}  />
             </div>
         </aside>
     )

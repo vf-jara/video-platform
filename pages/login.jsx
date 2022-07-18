@@ -17,10 +17,10 @@ export default function Login() {
     setLoading(true);
     signIn("credentials", { email: enterMail, password: enterPassword, redirect: false })
       .then(({ ok, error }) => {
-        setTimeout(function() { //Start the timer
-          setLoading(false);
-        }, 1000);
-        // setLoading(false);
+        // setTimeout(function() { //Start the timer
+        //   setLoading(false);
+        // }, 1000);
+        setLoading(false);
         if(ok){
             router.push("/");
         }else{

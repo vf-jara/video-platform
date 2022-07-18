@@ -32,17 +32,17 @@ export default function Player({slug, curso, lesson, type}) {
             {
                 type && (
                     type === "ComponentContentsVideoExternal" ? (
-                        <Video content={lesson} type={type} />
+                        <Video content={lesson} type={type} course={curso} />
                     ) : type === "ComponentContentsVideoLocal" ? (
-                        <Video content={lesson} type={type} />
+                        <Video content={lesson} type={type} course={curso} />
                     ) : type === "ComponentContentsArticle" ? (
-                        <Article content={lesson} />
+                        <Article content={lesson} course={curso} />
                     ) : type === "ComponentContentsImage" ? (
-                        <Article content={lesson} />
+                        <Article content={lesson} course={curso} />
                     ) : type === "ComponentContentsPdf" ? (
-                        <Article content={lesson} />
+                        <Article content={lesson} course={curso} />
                     ) : type === "ComponentContentsAudio" ? (
-                        <Video content={lesson} type={type} />
+                        <Video content={lesson} type={type} course={curso} />
                     ) : (
                         <></>
                     )

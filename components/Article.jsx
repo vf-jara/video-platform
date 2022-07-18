@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 
 
-export default function Article({ content }) {
+export default function Article({ content, course }) {
     const Output = dynamic(
         async () => (await import('editorjs-react-renderer')).default,
         { ssr: false }
@@ -25,7 +25,7 @@ export default function Article({ content }) {
                     </Link>
                 </div>
                 <div className="bg-green-is flex flex-1 items-center pl-5 text-white font-bold">
-                    Título do Conteúdo
+                {course[0]?.attributes?.title}
                 </div>
             </div>
 

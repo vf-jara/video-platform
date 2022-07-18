@@ -6,21 +6,22 @@ import Plyr from "plyr-react"
 import "plyr-react/plyr.css"
 
 
-export default function Video({content, type}) {
+export default function Video({ content, type }) {
     let plyrProps;
-    if(type === "ComponentContentsVideoExternal"){
+    if (type === "ComponentContentsVideoExternal") {
         plyrProps = {
             source: {
                 type: "video",
                 sources: [
                     {
-                        src: "GksjL2sReSY",
-                        provider: "youtube"
+                        src: content?.attributes?.content[0]?.url,
+                        provider: content?.attributes?.content[0]?.url.includes("youtube") ? "youtube" : content?.attributes?.content[0]?.url.includes("vimeo") ? "vimeo" : ""
                     }
-                ]
+                ],
+                ratio: "16:9"
             }
         }
-    }else if(type === "ComponentContentsVideoLocal"){
+    } else if (type === "ComponentContentsVideoLocal") {
         plyrProps = {
             source: {
                 type: "video",
@@ -40,7 +41,7 @@ export default function Video({content, type}) {
                 controls: ['play-large']
             }
         }
-    }else if(type === "ComponentContentsAudio"){
+    } else if (type === "ComponentContentsAudio") {
         plyrProps = {
             source: {
                 type: "audio",
@@ -75,7 +76,7 @@ export default function Video({content, type}) {
             </div>
             <div className="bg-slate-100 flex justify-center">
                 <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
-                    <Plyr {...plyrProps}/>
+                    <Plyr {...plyrProps} />
                 </div>
             </div>
 

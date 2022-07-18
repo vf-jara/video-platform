@@ -8,7 +8,8 @@ export default function SliderPadrao({cursos}) {
     var settings = {
         dots: false,
         arrows: false,
-        infinite: true,
+        infinite: false,
+        centerMode: false,
         speed: 500,
         slidesToShow: 7,
         slidesToScroll: 1,
@@ -20,8 +21,9 @@ export default function SliderPadrao({cursos}) {
                 settings: {
                     slidesToShow: 5,
                     slidesToScroll: 1,
-                    infinite: true,
-                    adaptiveHeight: true
+                    infinite: false,
+                    adaptiveHeight: true,
+                    centerMode: false
 
                 }
             },

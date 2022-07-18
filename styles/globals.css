@@ -37,8 +37,38 @@ body {
 
 /* Slider */
 @media(max-width: 400px){
-.slick-list {
-  padding: 0 20% 0 0 !important;
+  .slick-list {
+    padding: 0 20% 0 0 !important;
+  }
 }
 
+/* Article */
+.article-view{
+  font-size: 16px;
+  padding: 0 16px;
+  line-height:1.5em;
+  color: #121212;
+}
+@media(max-width: 400px){
+  .article-view{
+  padding: 0 0;
+  }
+}
+
+.article-view h2{
+  font-size: 32px;
+  line-height: 50px;
+  font-weight: 700;
+  margin-bottom: 20px !important;
+}
+
+.article-view p{
+  margin-bottom:20px !important;
+}
+
+.article-view figcaption{
+ top:auto !important;
+ bottom:0;
+ right:auto;
+ left:0px;
 }

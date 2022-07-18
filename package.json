@@ -12,6 +12,7 @@
     "@apollo/client": "^3.6.9",
     "@headlessui/react": "^1.6.6",
     "axios": "^0.27.2",
+    "editorjs-react-renderer": "^3.2.0",
     "graphql": "^16.5.0",
     "next": "^12.2.2",
     "next-auth": "^4.9.0",

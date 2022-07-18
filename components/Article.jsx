@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FolderOpen } from "phosphor-react";
 import Img from "react-cool-img";
 
-export default function Article({content}) {
+export default function Article({content, course}) {
     return (
         <div className="flex-1 bg-slate-100">
             <div className="flex">
@@ -18,7 +18,7 @@ export default function Article({content}) {
                     </Link>
                 </div>
                 <div className="bg-green-is flex flex-1 items-center pl-5 text-white font-bold">
-                    Título do Conteúdo
+                {course[0]?.attributes?.title}
                 </div>
             </div>
             <div className="bg-slate-100 flex justify-center">
@@ -33,7 +33,7 @@ export default function Article({content}) {
                         <div className="grid grid-cols-1 md:grid-cols-2">
                             <div className="flex items-center">
                                 <h1 className="text-2xl text-gray-700 font-bold">
-                                    Lesson Title
+                                {content?.attributes?.title}
                                 </h1>
                             </div>
                             <div className="flex md:justify-end">
@@ -46,8 +46,7 @@ export default function Article({content}) {
                         </div>
 
                         <p className="text-gray-700 mt-4 leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu scelerisque nulla. Aliquam erat volutpat. Nam lorem justo, dignissim non est quis, lobortis lacinia lectus. Nunc aliquam massa vitae tortor maximus vestibulum. Praesent sodales lacinia magna. Etiam non varius enim, ut iaculis diam. Suspendisse at ipsum hendrerit diam auctor ornare. Maecenas vel semper felis. Etiam arcu velit, efficitur imperdiet elementum in, vehicula sit amet orci. Vivamus interdum urna ac odio bibendum pellentesque. Quisque rhoncus lorem varius purus porta vulputate. Proin viverra tortor et nisl tristique fermentum. Maecenas ante lacus, gravida sit amet iaculis quis, cursus id lacus. Sed a congue odio, nec euismod lacus.
-
+                        {content?.attributes?.description}
                         </p>
                     </div>
                 </div>

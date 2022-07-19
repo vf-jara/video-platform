@@ -3,8 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Img from "react-cool-img";
 import Link from "next/link";
-import { activateUser, checkSession } from "../lib/api";
-import Stripe from "stripe";
+import axios from "axios";
 
 export default function SuccessPage({ sessionData, customer }) {
   const router = useRouter();
@@ -172,38 +171,13 @@ export default function SuccessPage({ sessionData, customer }) {
 }
 
 export const getServerSideProps = async ({ query }) => {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-  const id = query.id;
-  const sessionData = await stripe.checkout.sessions.retrieve(query.session_id);
-  const customer = await stripe.customers.retrieve(sessionData.customer);
-  if (sessionData.payment_status === "paid") {
-    if(activateUser(id).then((res) => {
-        if (res.user) {
-            return true
-        } else {
-            return false
-        }
-    })){
-        return {
-            props: {
-            sessionData,
-            customer,
-            }
-        }
-    }else{
-        return {
-            props: {
-              sessionData: null,
-              customer: null,
-          }
-        }
-    }
-  } else {
+  const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/check`, { query: query });
+  const { sessionData, customer } = data;
     return {
       props: {
-        sessionData: null,
-        customer: null,
+        sessionData,
+        customer,
+      }
     }
-    }
-  }
+
 };

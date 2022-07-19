@@ -22,8 +22,10 @@ export default function SignUp() {
       const { redirectUrl } = response.data;
       if (redirectUrl) {
         setLoading(false);
-        router.push(redirectUrl);
+        // router.push(redirectUrl);
+        window.location.replace(redirectUrl)
       } else {
+        setLoading(false);
         setError("invalid");
         console.log("Error creating checkout session");
       }

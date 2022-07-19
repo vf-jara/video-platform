@@ -1,0 +1,19 @@
+mutation createUser {
+  createUsersPermissionsUser(
+    data: {
+      username: "edcjmatheus@gmail.com"
+      email: "edcjmatheus@gmail.com"
+      password: "Eduardo123@"
+      confirmed: true
+      blocked: false
+      role: 1
+    }
+  ) {
+    data {
+      id
+      attributes {
+        email
+      }
+    }
+  }
+}

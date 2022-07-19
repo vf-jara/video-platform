@@ -66,6 +66,13 @@ export async function getServerSideProps({req, query }){
             }
         }
     } else {
+        if(!session?.user?.subscriptionActive){
+            return {
+                redirect: {
+                    destination: '/'
+                }
+            }
+        }
         const course = await cursoInfo(session, slug);
         const l = await lessonInfo(session, lesson);
         return {

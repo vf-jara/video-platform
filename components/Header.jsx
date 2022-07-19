@@ -1,10 +1,11 @@
+import { signOut } from "next-auth/react";
 import Img from "react-cool-img";
 import Link from 'next/link'
 import { Fragment, useEffect, useState } from "react";
 import { MagnifyingGlass, BellSimple, UserCircle, List, SignOut } from "phosphor-react";
 import { Menu, Transition } from '@headlessui/react'
 
-export default function Header({name, email}) {
+export default function Header({name, email, isActive}) {
     const [alertNotification, setAlertNotification] = useState(0);
     const Links = [
         { name: "Home", link: "/", id: 1 },
@@ -15,7 +16,6 @@ export default function Header({name, email}) {
 
     const accountMenu = [
         { text: "Minha Conta", link: "#", id: 1, icon: ''},
-        { text: "Sair", link: "/", id: 2, icon: <SignOut className="ml-2" size={22} color="red" />},
     ];
 
     const notifications = [
@@ -62,7 +62,7 @@ export default function Header({name, email}) {
                                     <List size={35} weight="bold" />
                                 </Menu.Button>
                             </div>
-
+                            
                             <Transition
                                 as={Fragment}
                                 enter="transition ease-out duration-100"
@@ -72,14 +72,14 @@ export default function Header({name, email}) {
                                 leaveFrom="transform opacity-100 scale-100"
                                 leaveTo="transform opacity-0 scale-95"
                             >
-                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white focus:outline-none">
+                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white dark:bg-gray-900  focus:outline-none">
                                     <div className="py-1">
                                         {
                                             Links.map((link) => (
                                                 <Menu.Item key={link.id}>
                                                     {({ active }) => (
                                                         <button className={classNames(
-                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 dark:text-white',
                                                             'block w-full px-4 py-2 text-base text-center'
                                                         )}>
                                                             <Link href={link.link}>
@@ -91,24 +91,23 @@ export default function Header({name, email}) {
                                             ))
                                         }
                                         <hr className="w-4/5 m-auto"></hr>
-                                        <form method="POST" action="#">
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        type="submit"
-                                                        className={classNames(
-                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                            'block w-full px-4 py-2 text-base text-center'
-                                                        )}
-                                                    >
-                                                        Sair
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
-                                        </form>
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <button
+                                                    onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login` })}
+                                                    className={classNames(
+                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 dark:text-white ',
+                                                        'inline-flex justify-center w-full px-4 py-2 text-base text-center rounded-md transition-all mb-2 last:mb-0'
+                                                    )}
+                                                >
+                                                    Sair {" "} <SignOut className="ml-2" size={22} color="red" />
+                                                </button>
+                                            )}
+                                        </Menu.Item>
                                     </div>
                                 </Menu.Items>
                             </Transition>
+                          
                         </Menu>
                     </div>
                 </div>
@@ -132,7 +131,7 @@ export default function Header({name, email}) {
                     </div>
                     <div className="flex flex-grow 2xl:pl-14">
                         <ul className="block space-x-5">
-                            {
+                            {isActive && (
                                 Links.map((link) => (
                                     <li key={link.name} className="space-x-4 px-4 inline-block">
                                         <Link href={link.link} className="">
@@ -140,17 +139,22 @@ export default function Header({name, email}) {
                                         </Link>
                                     </li>
                                 ))
-                            }
+                            )}
                         </ul>
                     </div>
                     <div className="flex relative transition-all">
-                        <MagnifyingGlass size={24} className="absolute left-0 text-white hover:text-orange-is transition-all" />
-                        <input type="text" name="search" placeholder="" className="bg-transparent text-white w-10 z-0 focus:w-full transition-all focus:border-b delay-300 ring-0 outline-none pl-10">
-                        </input>
+                        {isActive && (
+                            <>
+                                <MagnifyingGlass size={24} className="absolute left-0 text-white hover:text-orange-is transition-all" />
+                                <input type="text" name="search" placeholder="" className="bg-transparent text-white w-10 z-0 focus:w-full transition-all focus:border-b delay-300 ring-0 outline-none pl-10">
+                                </input>
+                            </>
+                        )}
                     </div>
                     <div className="mx-3">
                         {/* <BellSimple size={24} weight="fill" className="text-white hover:text-orange-is transition-all" /> */}
-                        <Menu as="div" className="relative">
+                        {isActive && (
+                            <Menu as="div" className="relative">
                             <div className="flex">
                                 <Menu.Button className="inline-flex justify-center w-full p-1 rounded-full shadow-sm text-white hover:bg-gray-100 hover:text-orange-is focus:outline-none transition-all delay-50">
                                     <BellSimple size={24} weight="fill" />
@@ -192,7 +196,8 @@ export default function Header({name, email}) {
                                     </div>
                                 </Menu.Items>
                             </Transition>
-                        </Menu>
+                            </Menu>
+                        )}
                     </div>
                     <div className="ml-3">
                         <Menu as="div" className="relative">
@@ -213,7 +218,7 @@ export default function Header({name, email}) {
                                 <Menu.Items className=" origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-900 focus:outline-none dark:text-white">
                                     <div className="py-2 px-2">
                                         <div className="py-2 px-2 text-sm text-gray-900 dark:text-white">
-                                            <div className="font-bold text-base capitalize">{name}</div>
+                                            <div className="font-bold text-base capitalize truncate">{name}</div>
                                             <div className="font-medium truncate text-sm">{email}</div>
                                         </div>
                                         <hr className="bg-white mx-1 my-2"/>
@@ -234,6 +239,19 @@ export default function Header({name, email}) {
                                             </Menu.Item>
                                             ))
                                         }
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <button
+                                                    onClick={() => signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login` })}
+                                                    className={classNames(
+                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 dark:text-white ',
+                                                        'inline-flex justify-center w-full px-4 py-2 text-base text-center rounded-md transition-all mb-2 last:mb-0'
+                                                    )}
+                                                >
+                                                    Sair {" "} <SignOut className="ml-2" size={22} color="red" />
+                                                </button>
+                                            )}
+                                        </Menu.Item>
                                     </div>
                                 </Menu.Items>
                             </Transition>

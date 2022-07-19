@@ -14,6 +14,7 @@
     "axios": "^0.27.2",
     "editorjs-react-renderer": "^3.2.0",
     "graphql": "^16.5.0",
+    "micro": "^9.4.0",
     "next": "^12.2.2",
     "next-auth": "^4.9.0",
     "phosphor-react": "^1.4.1",
@@ -22,7 +23,8 @@
     "react-cool-img": "^1.2.12",
     "react-dom": "18.2.0",
     "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "stripe": "^9.14.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

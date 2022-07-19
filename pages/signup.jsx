@@ -1,32 +1,33 @@
 import Head from "next/head";
 import { useRouter } from 'next/router';
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Img from "react-cool-img";
-import { signIn, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
+import Link from "next/link";
+import axios from "axios";
 
-export default function Login() {
+export default function SignUp() {
   const router = useRouter();
+  const [enterName, setEnterName] = useState("");
   const [enterMail, setEnterMail] = useState("");
   const [enterPassword, setEnterPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    signIn("credentials", { email: enterMail, password: enterPassword, redirect: false })
-      .then(({ ok, error }) => {
-        // setTimeout(function() { //Start the timer
-        //   setLoading(false);
-        // }, 1000);
-        if(ok){
-            router.push("/");
-            // setLoading(false);
-        }else{
-            setError("invalid");
-        }
-      });
+    await axios.post("/api/signup", {name: enterName, email: enterMail, password: enterPassword}).then((response) => {
+      console.log(response.data);
+      const { redirectUrl } = response.data;
+      if (redirectUrl) {
+        setLoading(false);
+        router.push(redirectUrl);
+      } else {
+        setError("invalid");
+        console.log("Error creating checkout session");
+      }
+    });
   };
 
   useEffect(()=> {
@@ -38,7 +39,7 @@ export default function Login() {
   return (
     <div className="md:grid md:grid-cols-12 h-screen">
       <Head>
-        <title>Login | IS com Ciência</title>
+        <title>Crie a sua conta | IS com Ciência</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -77,49 +78,56 @@ export default function Login() {
           className="object-cover absolute h-full"
         />
       </div>
-      <div className="md:col-span-4 h-screen px-5 md:px-5 align-middle">
+      <div className="md:col-span-4 h-screen px-8 2xl:px-5 align-middle">
         <div className="w-full flex items-center justify-center">
           <div className="w-full h-screen flex flex-col justify-center items-center align-middle">
-            <Img src="/assets/images/logo.png" />
-            <p className="text-lg text-blue-is font-semibold mt-8">
-              Acesse sua conta com seu e-mail e senha
+            <Img src="/assets/images/logo.png" style={{height: '100px'}} />
+            <p className="text-base text-center 2xl:text-lg text-blue-is font-semibold mt-8">
+              Preencha os dados abaixo para criar a sua conta
             </p>
             <form
-              className="w-full mb-8 mt-8 lg:mb-16"
+              className="w-full mb-8 mt-5 2xl:mb-16"
               onSubmit={handleSubmit}
             >
-              <label htmlFor="mail" className="block font-bold text-lg text-blue-is">
-                E-mail
+                <label htmlFor="name" className="block font-bold text-sm 2xl:text-lg text-blue-is">
+                    Qual o seu nome?
+                </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nome Completo"
+                className="w-full border border-[#C1C1C1] px-4 py-3 rounded-lg mt-2 mb-2 text-blue-is text-sm"
+                value={enterName}
+                onChange={(e) => setEnterName(e.target.value)}
+                required
+              ></input>
+              <label htmlFor="email" className="block font-bold text-sm 2xl:text-lg text-blue-is">
+                Qual o seu melhor e-mail?
               </label>
               <input
                 type="email"
                 name="email"
                 id="email"
                 placeholder="email@email.com"
-                className="w-full border border-[#C1C1C1] px-4 py-3 rounded-lg mt-2 mb-5 text-blue-is"
+                className="w-full border border-[#C1C1C1] px-4 py-3 rounded-lg mt-2 mb-2 text-blue-is text-sm"
                 value={enterMail}
                 onChange={(e) => setEnterMail(e.target.value)}
                 required
               ></input>
 
-              <div className="flex flex-row justify-end -mb-6">
-                <a href="#" className="text-purple-is underline">
-                  Esqueceu sua senha?
-                </a>
-              </div>
-
               <label
                 htmlFor="password"
-                className="block font-bold text-blue-is text-lg"
+                className="block font-bold text-blue-is text-sm 2xl:text-lg"
               >
-                Senha
+                Escolha uma senha para a sua conta:
               </label>
               <input
                 type="password"
                 id="password"
                 name="password"
-                placeholder="**********"
-                className="w-full border border-[#C1C1C1] px-4 py-3 rounded-lg mt-2 mb-5 text-blue-is"
+                placeholder="Digite aqui a sua senha"
+                className="w-full border border-[#C1C1C1] px-4 py-3 rounded-lg mt-2 mb-5 text-blue-is text-sm"
                 value={enterPassword}
                 onChange={(e) => setEnterPassword(e.target.value)}
                 required
@@ -128,10 +136,10 @@ export default function Login() {
                 <button
                   type="submit"
                   disabled
-                  className="flex items-center justify-center text-center text-lg w-full px-6 py-4 bg-orange-is rounded-lg text-white font-bold hover:bg-orange-hv-is transition-colors"
+                  className="flex items-center justify-center text-center text-base 2xl:text-lg w-full px-6 py-4 bg-orange-is rounded-lg text-white font-bold hover:bg-orange-hv-is transition-colors"
                 >
                   <svg className="animate-spin h-7 w-7 mr-5 flex" fill="transparent" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
                   Aguarde...
@@ -140,18 +148,24 @@ export default function Login() {
               {!loading && (
                 <button
                   type="submit"
-                  className="flex items-center justify-center text-center text-lg w-full px-6 py-4 bg-orange-is rounded-lg text-white font-bold hover:bg-orange-hv-is transition-all"
+                  className="flex items-center justify-center text-center text-base 2xl:text-lg w-full px-6 py-4 bg-orange-is rounded-lg text-white font-bold hover:bg-orange-hv-is transition-all"
                 >
-                  Entrar
+                  Ir para Pagamento
                 </button>
               )}
             </form>
-            <p className="mb-5 text-blue-is text-center text-lg">
-              Ainda não faz parte da comunidade?
+            <p className="mb-5 text-blue-is text-center text-base 2xl:text-lg">
+              Já possui uma conta?
               <br/>
-              <button href="" className="text-orange-is underline hover:font-bold transition-all">
-                Assine agora!
-              </button>
+              <Link href={{
+                    pathname: '/login'
+                }}>
+                <a>
+                    <button className="text-orange-is underline hover:font-bold transition-all">
+                        Clique aqui para entrar!
+                    </button>
+                </a>
+              </Link>
             </p>
           </div>
         </div>

@@ -4,7 +4,6 @@ import Img from "react-cool-img";
 import Slider from "react-slick";
 
 export default function SliderPadrao({cursos}) {
-    console.log("Slider:", cursos);
     var settings = {
         dots: false,
         arrows: false,

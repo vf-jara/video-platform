@@ -31,8 +31,8 @@ export default function SignUp() {
   };
 
   useEffect(() => {
-    if (router.query.error) {
-      setError(router.query.error);
+    if (router?.query?.error) {
+      setError(router?.query?.error);
     }
   }, []);
 

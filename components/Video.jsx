@@ -60,9 +60,9 @@ export default function Video({ content, type, course }) {
     const options = {
         controls: [
             "play-large",
-            // "rewind",
+            "rewind",
             "play",
-            // "fast-forward",
+            "fast-forward",
             "progress",
             "current-time",
             "duration",
@@ -95,6 +95,7 @@ export default function Video({ content, type, course }) {
             <div className="bg-slate-100 flex justify-center">
                 <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
                     <Plyr ref={playerRef} {...plyrProps} options={options} />
+
                 </div>
             </div>
 

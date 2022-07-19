@@ -1,11 +1,10 @@
 import { getSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from 'next/router';
-import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import SliderPadrao from "../components/Slider";
 import { homeInfo } from "../lib/api";
-import { ArrowRight } from "phosphor-react";
+
 
 export default function Home({ session, courses, homepageInfo }) {
     console.log("Cursos:", courses);

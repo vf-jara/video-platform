@@ -178,7 +178,7 @@ export default function Header({name, email}) {
                                                         )}
                                                     >
                                                         <span className={`${notify.readed ? 'text-white bg-green-500' : 'border-2'} w-5 h-5 mr-4 flex my-auto items-center p-1 text-sm font-semibold rounded-full` }>
-                                                            <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                                            <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                                                         </span>
                                                         <div className="block">
                                                             <h3 className="text-base font-bold">{notify.title}</h3>

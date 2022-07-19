@@ -97,7 +97,7 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
               >
                 <div className="flex items-center">
                   <svg
-                    ariaHidden="true"
+                    aria-hidden="true"
                     className="mr-2 w-5 h-5 text-red-700 dark:text-red-800"
                     fill="currentColor"
                     viewBox="0 0 20 20"

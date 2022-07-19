@@ -63,7 +63,7 @@ export default function SliderPadrao({cursos}) {
     };
     return (
         <Slider {...settings}>
-        {cursos.map((curso) => (
+        {cursos?.map((curso) => (
             <Link href={`/${curso.attributes.slug}`} key={curso.attributes.id}>
                 <a>
                     <div className="px-3 outline-none">

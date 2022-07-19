@@ -19,15 +19,15 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div className="bg-[#000303] pb-16">
+        <div className="bg-[#000303] pb-16 min-h-screen">
           <div
-            className="bg-top-center bg-no-repeat bg-cover"
+            className="bg-top xl:bg-bottom bg-no-repeat bg-cover"
             style={{
               backgroundImage: `url(${homepageInfo?.heroImage?.data?.attributes?.url})`,
             }}
           >
             <Header name={session.user.fullName} email={session.user.email} isActive={isActive} />
-            <div className="md:w-2/3 2xl:pt-32 pt-16 px-8 md:px-20 2xl:pb-20">
+            <div className="md:w-2/3 2xl:flex 2xl:flex-col 2xl:justify-center px-8 md:px-20 2xl:h-[55vh] pt-8 2xl:pt-0">
               <h1 className="text-white font-bold text-5xl md:text-6xl pb-4">
                 {homepageInfo?.heroTitle || "[Hero Title] As bases da IS"}
               </h1>
@@ -36,7 +36,7 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
                   "[Hero Description] Lorem Ipsum"}
               </p>
               <button
-                className="text-base flex align-middle ease-in-out hover:-translate-y-1 hover:scale-105 duration-300 text-white px-10 pt-[16px] pb-[17px] bg-orange-is hover:bg-white hover:text-orange-is justify-center rounded-md font-medium"
+                className="text-base flex 2xl:w-1/4 align-middle ease-in-out hover:-translate-y-1 hover:scale-105 duration-300 text-white px-10 pt-[16px] pb-[17px] bg-orange-is hover:bg-white hover:text-orange-is justify-center rounded-md font-medium"
                 onClick={() => {
                   router.push(homepageInfo?.heroButtonLink || "/");
                 }}
@@ -65,12 +65,12 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
             </div>
           </div>
 
-          <div className="pt-16 px-5 md:px-16 w-full">
+          {/* <div className="pt-16 px-5 md:px-16 w-full">
             <h2 className="px-4 text-2xl font-bold text-white pb-7">
               Cursos Completos
             </h2>
             {courses && <SliderPadrao cursos={courses} />}
-          </div>
+          </div> */}
         </div>
       </>
     );
@@ -116,8 +116,8 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
                 </div>
                 <div className="mt-2 mb-4 text-base text-red-700 dark:text-red-800">
                   Identificamos inconsistências no seu pagamento. Se a sua assinatura for via Boleto aguarde até a compensação do mesmo.
-                  <br/>
-                  <br/>
+                  <br />
+                  <br />
                   Caso tenha dúvidas sobre o faturamento da sua conta, clique no botão abaixo e entre em contato com a nossa equipe pelo WhatsApp.
                 </div>
                 <div className="flex">

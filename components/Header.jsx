@@ -27,7 +27,6 @@ export default function Header({name, email, isActive}) {
     useEffect(() => {
         var qtd = notifications.filter(checkNotification);
         setAlertNotification(qtd.length);
-        console.log("notificações:", alertNotification)
     },[notifications])
 
     function checkNotification(n) {

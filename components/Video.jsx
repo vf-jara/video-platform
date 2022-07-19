@@ -3,7 +3,7 @@ import { FolderOpen } from "phosphor-react";
 import Link from "next/link";
 import Img from "react-cool-img";
 import Plyr from "plyr-react";
-import "plyr-react/plyr.css"
+import "plyr-react/dist/plyr.css"
 import React, { useRef } from "react";
 
 

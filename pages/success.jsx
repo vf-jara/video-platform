@@ -11,8 +11,8 @@ export default function SuccessPage({ sessionData, customer }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (router.query.error) {
-      setError(router.query.error);
+    if (router?.query?.error) {
+      setError(router?.query?.error);
     }
   }, [router.query.error]);
 

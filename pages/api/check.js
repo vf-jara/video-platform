@@ -1,8 +1,8 @@
-import axios from "axios";
+
 import Stripe from "stripe";
 import { activateUser } from "../../lib/api";
 
-export default async (req, res) => {
+export default async function handler(req, res){
   if (req.method === "POST") {
     const { query } = req.body;
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);

@@ -14,7 +14,7 @@ export default function SuccessPage({ sessionData, customer }) {
     if (router.query.error) {
       setError(router.query.error);
     }
-  }, []);
+  }, [router.query.error]);
 
   return (
     <div className="md:grid md:grid-cols-12 h-screen">

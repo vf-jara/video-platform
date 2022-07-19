@@ -2,7 +2,7 @@ import axios from "axios";
 import Stripe from "stripe";
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-export default async (req, res) => {
+export default async function handler(req, res){
   if (req.method === "POST") {
     const {name, email, password} = req.body;
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);

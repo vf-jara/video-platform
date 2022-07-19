@@ -26,7 +26,7 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
               backgroundImage: `url(${homepageInfo?.heroImage?.data?.attributes?.url})`,
             }}
           >
-            <Header name={session.user.fullName} email={session.user.email} />
+            <Header name={session.user.fullName} email={session.user.email} isActive={isActive} />
             <div className="md:w-2/3 2xl:pt-32 pt-16 px-8 md:px-20 2xl:pb-20">
               <h1 className="text-white font-bold text-5xl md:text-6xl pb-4">
                 {homepageInfo?.heroTitle || "[Hero Title] As bases da IS"}

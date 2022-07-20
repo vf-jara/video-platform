@@ -9,12 +9,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-<<<<<<< HEAD
   font-family: 'Open Sans', sans-serif;
   position:relative;
-=======
-  font-family: "Open Sans", sans-serif;
->>>>>>> 40de13a2f432b19d0ab4f225bd46149e9a8ed613
 }
 
 /*
@@ -89,7 +85,7 @@ body {
 
 /* Animations */
 .card-course{
-  transform: scale(0.95);
+  transform: scale(0.9);
   transition: all .5s;
 }
 .card-course:hover,

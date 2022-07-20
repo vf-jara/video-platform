@@ -80,7 +80,7 @@ export default function SliderPadrao({ cursos }) {
                 {cursos?.map((curso) => (
                     <div key={curso.id} >
                             <div className="px-3 outline-none cursor-pointer" onClick={() => abrirModal(curso.attributes.title, curso.attributes.description, curso.attributes.slug, curso?.attributes?.coverV?.data?.attributes?.url)}>
-                                <Img className="rounded-lg"
+                                <Img className="rounded-lg card-course"
                                     src={curso?.attributes?.coverV?.data?.attributes?.url}
                                 />
                             </div>

@@ -77,7 +77,7 @@ export async function getServerSideProps({req, query }){
         const l = await lessonInfo(session, lesson);
         let arrHistorico = [];
         await historico(session, course?.data?.courses?.data[0]?.id).then((hist) => {
-            hist.map((h) => {
+            hist?.map((h) => {
                 arrHistorico.push(h?.attributes?.lesson?.data?.id);
             });
         });

@@ -1,9 +1,12 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Img from "react-cool-img";
 import Slider from "react-slick";
+import { Play, X } from "phosphor-react";
 
-export default function SliderPadrao({cursos}) {
+export default function SliderPadrao({ cursos }) {
+    const [modalOpen, setOpen] = useState(false)
+    const [info, setInfo] = useState({ title: '', description: '', link: '', image: '' })
     var settings = {
         dots: false,
         arrows: false,
@@ -61,19 +64,57 @@ export default function SliderPadrao({cursos}) {
             },
         ]
     };
+    function abrirModal(title, description, link, image) {
+        setInfo({
+            title,
+            description,
+            link,
+            image
+        })
+        setOpen(true)
+    }
     return (
-        <Slider {...settings}>
-        {cursos?.map((curso) => (
-            <Link href={`/${curso.attributes.slug}`} key={curso.attributes.id}>
-                <a>
-                    <div className="px-3 outline-none">
-                        <Img className="rounded-lg"
-                            src={curso?.attributes?.coverV?.data?.attributes?.url}
-                        />
+        <>
+
+            <Slider {...settings}>
+                {cursos?.map((curso) => (
+                    <div key={curso.id} >
+                            <div className="px-3 outline-none cursor-pointer" onClick={() => abrirModal(curso.attributes.title, curso.attributes.description, curso.attributes.slug, curso?.attributes?.coverV?.data?.attributes?.url)}>
+                                <Img className="rounded-lg"
+                                    src={curso?.attributes?.coverV?.data?.attributes?.url}
+                                />
+                            </div>
                     </div>
-                </a>
-            </Link>
-        ))}
-        </Slider>
+                ))}
+            </Slider>
+            <div className={`fixed p-10 top-0 left-0 bottom-0 right-0 w-full h-full flex items-center justify-center ${modalOpen ? '' : 'hidden'} backdrop-blur`}>
+                <div className="bg-zinc-900 rounded-lg p-6 relative min-w-[50%] max-w-3xl">
+                    <button onClick={() => setOpen(!modalOpen)} className="absolute top-5 right-5 text-white">
+                        <X size={30} weight="bold" className="" />
+                    </button>
+                    <div className="flex gap-x-10">
+                        <div className="min-w-[30%]">
+                            <Img
+                                src={info?.image}
+                            />
+                        </div>
+                        <div className="flex flex-col w-full">
+                            <h2 className="text-4xl text-white mb-3">{info?.title}</h2>
+                            <p className="text-white opacity-75 text-base xl:text-lg mb-8">{info?.description}</p>
+                            <Link href={`/${info?.link}`}>
+                                <a>
+                                    <div className="p-4 flex text-white text-lg rounded-lg gap-3 bg-orange-is hover:bg-orange-hv-is w-2/5 justify-center">
+                                        <p>Assistir</p>
+                                        <Play size={24} weight="fill"/>
+                                    </div>
+                                </a>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </>
     );
 }

@@ -72,6 +72,7 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
             {courses && <SliderPadrao cursos={courses} />}
           </div> */}
         </div>
+       
       </>
     );
   } else {

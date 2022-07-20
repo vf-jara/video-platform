@@ -66,8 +66,8 @@ export default function SliderPadrao({cursos}) {
         {cursos?.map((curso) => (
             <Link href={`/${curso.attributes.slug}`} key={curso.attributes.id}>
                 <a>
-                    <div className="px-3 outline-none">
-                        <Img className="rounded-lg"
+                    <div className="px-3 outline-none ">
+                        <Img className="rounded-lg card-course"
                             src={curso?.attributes?.coverV?.data?.attributes?.url}
                         />
                     </div>

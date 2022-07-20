@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
@@ -9,7 +9,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /*
@@ -18,15 +18,17 @@ body {
 .link-underline {
   margin-top: 5px;
   border-bottom-width: 0;
-  background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#fff, #fff);
   background-size: 0 3px;
   background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size .5s ease-in-out;
+  transition: background-size 0.5s ease-in-out;
 }
 
 .link-underline-black {
-  background-image: linear-gradient(transparent, transparent), linear-gradient(#F26321, #F26321)
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#f26321, #f26321);
 }
 
 .link-underline:hover {
@@ -34,46 +36,91 @@ body {
   background-position: 0 100%;
 }
 
-
 /* Slider */
-@media(max-width: 400px){
+@media (max-width: 400px) {
   .slick-list {
     padding: 0 20% 0 0 !important;
   }
 }
 
 /* Article */
-.article-view{
+.article-view {
   font-size: 16px;
   padding: 0 16px;
-  line-height:1.5em;
+  line-height: 1.5em;
   color: #121212;
 }
-@media(max-width: 400px){
-  .article-view{
-  padding: 0 0;
+@media (max-width: 400px) {
+  .article-view {
+    padding: 0 0;
   }
 }
 
-.article-view h2{
+.article-view h2 {
   font-size: 22px;
   line-height: 25px;
   font-weight: 700;
   margin-bottom: 20px !important;
 }
 
-.article-view p{
-  margin-bottom:20px !important;
+.article-view p {
+  margin-bottom: 20px !important;
 }
 
-.article-view figcaption{
- top:auto !important;
- bottom:0;
- right:auto;
- left:0px;
+.article-view figcaption {
+  top: auto !important;
+  bottom: 0;
+  right: auto;
+  left: 0px;
 }
 /* Plyr Player de media */
-:root{
-  --plyr-color-main: #F26321;
-  --plyr-video-controls-background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.85))
+:root {
+  --plyr-color-main: #f26321;
+  --plyr-video-controls-background: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.85)
+  );
+}
+
+/* Animations */
+.card-course{
+  transform: scale(0.95);
+  transition: all .5s;
+}
+.card-course:hover,
+.card-course:focus{
+  transform: scale(1);
+  transition: all .5s;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

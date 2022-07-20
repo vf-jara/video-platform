@@ -1,10 +1,10 @@
 
-import { FolderOpen } from "phosphor-react";
 import Link from "next/link";
 import Img from "react-cool-img";
 import Plyr from "plyr-react";
 import "plyr-react/dist/plyr.css"
-import React, { useEffect, useCallback } from "react";
+import React, { useCallback } from "react";
+import MateriaisComplementares from "./MateriaisComplementares";
 
 
 export default function Video({ content, type, course }) {
@@ -76,7 +76,6 @@ export default function Video({ content, type, course }) {
 
     const playerRef = useCallback( node => {
         if (node !== null) {
-          console.log("Ref:", node.plyr);
             if(node.plyr){
                 node?.plyr?.on("play", (event) => {
                     console.log("playing-event");
@@ -88,22 +87,6 @@ export default function Video({ content, type, course }) {
         }
     }, []);
 
-
-    // useEffect(() => {
-    //     document.addEventListener('DOMContentLoaded', () => {
-    //         playerRef?.current?.plyr?.on("playing", (event) => {
-    //             console.log("playing-event");
-    //         })
-    //         const player = new Plyr('#player', {
-    //          // player options
-    //          });
-
-    //         player.on('playing', event => {
-    //             console.log("player");
-    //          });
-    //     });
-        
-    //   }, [])
     return (
         <div className="flex-1 bg-slate-100">
             <div className="flex">
@@ -139,10 +122,7 @@ export default function Video({ content, type, course }) {
                                 </h1>
                             </div>
                             <div className="flex md:justify-end">
-                                <a href="" className="p-4 md:w-2/3 my-4 text-sm bg-purple-is text-white flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-is transition-colors">
-                                    <FolderOpen size={24} />
-                                    Materiais Complementares
-                                </a>
+                                <MateriaisComplementares />
                             </div>
 
                         </div>

@@ -6,8 +6,7 @@ import "plyr-react/dist/plyr.css"
 import React, { useCallback } from "react";
 import MateriaisComplementares from "./MateriaisComplementares";
 
-
-export default function Video({ content, type, course }) {
+export default function Video({ content, type, course, session }) {
     let plyrProps;
     if (type === "ComponentContentsVideoExternal") {
         plyrProps = {
@@ -76,12 +75,12 @@ export default function Video({ content, type, course }) {
 
     const playerRef = useCallback( node => {
         if (node !== null) {
-            if(node.plyr){
+            if(node?.plyr?.on){
                 node?.plyr?.on("play", (event) => {
-                    console.log("playing-event");
+                    console.log("Play");
                 });
                 node?.plyr?.on("ended", (event) => {
-                    console.log("ended-event");
+                    console.log("Fim");
                 });
             }
         }

@@ -53,29 +53,34 @@ export async function getServerSideProps({req, query }){
             }
         }
         const course = await cursoInfo(session, slug);
-         const conteudos = course?.data?.courses?.data[0]?.attributes?.contents;
-         conteudos.forEach( async (conteudo) => {
-             let h = await lessonHistoric(session, conteudo?.lesson?.data?.id);
-             if(h?.data?.lessonHistorics?.meta?.pagination?.total === 0){
-                return {
-                    redirect: {
-                        destination: `/${slug}/lesson/${conteudo?.attributes?.slug}`
-                    }
+        let conteudoEnviado = '';
+        const conteudos = course?.data?.courses?.data[0]?.attributes?.contents;
+        let verifica = false;
+        for (const conteudo of conteudos) {
+            let h = await lessonHistoric(session, conteudo?.lesson?.data?.id, course?.data?.courses?.data[0]?.id);
+            if(h?.data?.lessonHistorics?.meta?.pagination?.total === 0){
+                console.log("H: ", h?.data?.lessonHistorics?.meta?.pagination?.total );
+                console.log("\nNão tem histórico\n");
+                verifica = true;
+                conteudoEnviado = conteudo?.lesson?.data?.attributes?.slug;
+                break;
+            }else{
+                continue;
+            }
+        }
+        if(verifica){
+            return {
+                redirect: {
+                    destination: `/${slug}/lesson/${conteudoEnviado}`
                 }
-             }
-         });
-        return {
-            redirect: {
-                destination: `/${slug}/lesson/${conteudos[0]?.lesson?.data?.attributes?.slug}`
+            }
+        }else{
+            return {
+                redirect: {
+                    destination: `/${slug}/lesson/${conteudos[0]?.lesson?.data?.attributes?.slug}`
+                }
             }
         }
 
-        // return {
-        //     props: {
-        //         session,
-        //         slug,
-        //         curso: course?.data?.courses?.data[0] || []
-        //     },
-        // }
     }
 }

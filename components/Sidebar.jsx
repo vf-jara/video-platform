@@ -1,6 +1,6 @@
 import Lesson from "./Lesson"
 
-export default function Sidebar({lessons, course}) {
+export default function Sidebar({lessons, course, session, courseId, historico}) {
     return (
         <aside className="w-[385px] shadow-lg">
             <div className="bg-orange-is p-6">
@@ -8,8 +8,8 @@ export default function Sidebar({lessons, course}) {
                     Conteúdos
                 </span>
             </div>
-            <div className="flex flex-col gap-5 p-3">
-                <Lesson lessons={lessons} course={course}  />
+            <div className="flex flex-col gap-2 p-3">
+                <Lesson lessons={lessons} course={course} courseId={courseId} session={session} historico={historico} />
             </div>
         </aside>
     )

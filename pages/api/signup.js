@@ -15,6 +15,7 @@ export default async function handler(req, res){
     const headers = {
         "content-type": "application/json",
         "Authorization": `Bearer ${process.env.STRAPI_API_TOKEN}`
+
     };
     const graphqlQuery = {
         "operationName": "createUser",

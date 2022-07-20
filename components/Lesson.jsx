@@ -1,9 +1,19 @@
 import Link from "next/link";
-import { Article, Headphones, MonitorPlay, Play } from "phosphor-react";
+import { Article, CheckCircle, File, FilePdf, Headphones, Image, MonitorPlay } from "phosphor-react";
 
-export default function Lesson(props) {
-    const lessons = props.lessons;
-    const course = props.course;
+export default function Lesson({lessons, course, historico}) {
+
+  function verifica(id){
+    let v = historico.find( (e) => {
+      if(e == id){
+        return true;
+      }else{
+        return false;
+      }
+    });
+    return v;
+  }
+
   return (
     <>
       {lessons !== [] &&
@@ -18,12 +28,16 @@ export default function Lesson(props) {
               className="group" key={lesson.lesson.data.id}
             >
               <a>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                  <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                    <Article size={32} weight="fill" />
+                <div className={`${verifica(lesson?.lesson?.data?.id) ? 'bg-green-500 border-green-600 hover:bg-green-600' : 'hover:border-orange-is'} transition-all delay-75 flex border rounded-md items-center gap-1 px-4 py-6 `}>
+                  <div className={`rounded-full ${verifica(lesson?.lesson?.data?.id) ? ' text-white' : 'bg-orange-100 text-orange-is'} p-2 `}>
+                    {verifica(lesson?.lesson?.data?.id) ? (
+                      <CheckCircle size={32} color="#ffffff" weight="fill" />
+                    ): (
+                      <Article size={32} weight="fill" />
+                    )}
                   </div>
 
-                  <strong className="block text-gray-700 underline">
+                  <strong className={`${verifica(lesson?.lesson?.data?.id) ? 'text-white' : 'text-gray-700'} block `}>
                     {lesson?.lesson?.data?.attributes?.title}
                   </strong>
                 </div>
@@ -40,15 +54,18 @@ export default function Lesson(props) {
               replace
             >
               <a>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                  <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                    <MonitorPlay size={32} weight="bold" />
+                <div className={`${verifica(lesson?.lesson?.data?.id) ? 'bg-green-500 border-green-600 hover:bg-green-600' : 'hover:border-orange-is'} transition-all delay-75 flex border rounded-md items-center gap-1 px-4 py-6 `}>
+                  <div className={`rounded-full ${verifica(lesson?.lesson?.data?.id) ? ' text-white' : 'bg-orange-100 text-orange-is'} p-2 `}>
+                    {verifica(lesson?.lesson?.data?.id) ? (
+                      <CheckCircle size={32} color="#ffffff" weight="fill" />
+                    ): (
+                      <MonitorPlay size={32} weight="bold" />
+                    )}
                   </div>
-                  <div className="">
-                    <strong className="text-gray-700 underline">
-                      {lesson?.lesson?.data?.attributes?.title}
-                    </strong>
-                  </div>
+
+                  <strong className={`${verifica(lesson?.lesson?.data?.id) ? 'text-white' : 'text-gray-700'} block `}>
+                    {lesson?.lesson?.data?.attributes?.title}
+                  </strong>
                 </div>
               </a>
             </Link>
@@ -63,15 +80,18 @@ export default function Lesson(props) {
               replace
             >
               <a>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                  <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                    <MonitorPlay size={32} weight="bold" />
+              <div className={`${verifica(lesson?.lesson?.data?.id) ? 'bg-green-500 border-green-600 hover:bg-green-600' : 'hover:border-orange-is'} transition-all delay-75 flex border rounded-md items-center gap-1 px-4 py-6 `}>
+                  <div className={`rounded-full ${verifica(lesson?.lesson?.data?.id) ? ' text-white' : 'bg-orange-100 text-orange-is'} p-2 `}>
+                    {verifica(lesson?.lesson?.data?.id) ? (
+                      <CheckCircle size={32} color="#ffffff" weight="fill" />
+                    ): (
+                      <MonitorPlay size={32} weight="bold" />
+                    )}
                   </div>
-                  <div className="">
-                    <strong className="text-gray-700 underline">
-                      {lesson?.lesson?.data?.attributes?.title}
-                    </strong>
-                  </div>
+
+                  <strong className={`${verifica(lesson?.lesson?.data?.id) ? 'text-white' : 'text-gray-700'} block `}>
+                    {lesson?.lesson?.data?.attributes?.title}
+                  </strong>
                 </div>
               </a>
             </Link>
@@ -86,12 +106,16 @@ export default function Lesson(props) {
               replace
             >
               <a>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                  <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                    <Article size={32} weight="fill" />
+                <div className={`${verifica(lesson?.lesson?.data?.id) ? 'bg-green-500 border-green-600 hover:bg-green-600' : 'hover:border-orange-is'} transition-all delay-75 flex border rounded-md items-center gap-1 px-4 py-6 `}>
+                  <div className={`rounded-full ${verifica(lesson?.lesson?.data?.id) ? ' text-white' : 'bg-orange-100 text-orange-is'} p-2 `}>
+                    {verifica(lesson?.lesson?.data?.id) ? (
+                      <CheckCircle size={32} color="#ffffff" weight="fill" />
+                    ): (
+                      <Image size={32} weight="bold" />
+                    )}
                   </div>
 
-                  <strong className="block text-gray-700 underline">
+                  <strong className={`${verifica(lesson?.lesson?.data?.id) ? 'text-white' : 'text-gray-700'} block `}>
                     {lesson?.lesson?.data?.attributes?.title}
                   </strong>
                 </div>
@@ -108,12 +132,16 @@ export default function Lesson(props) {
               replace
             >
               <a>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                  <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                    <Article size={32} weight="fill" />
+                <div className={`${verifica(lesson?.lesson?.data?.id) ? 'bg-green-500 border-green-600 hover:bg-green-600' : 'hover:border-orange-is'} transition-all delay-75 flex border rounded-md items-center gap-1 px-4 py-6 `}>
+                  <div className={`rounded-full ${verifica(lesson?.lesson?.data?.id) ? ' text-white' : 'bg-orange-100 text-orange-is'} p-2 `}>
+                    {verifica(lesson?.lesson?.data?.id) ? (
+                      <CheckCircle size={32} color="#ffffff" weight="fill" />
+                    ): (
+                      <FilePdf size={32} weight="bold" />
+                    )}
                   </div>
 
-                  <strong className="block text-gray-700 underline">
+                  <strong className={`${verifica(lesson?.lesson?.data?.id) ? 'text-white' : 'text-gray-700'} block `}>
                     {lesson?.lesson?.data?.attributes?.title}
                   </strong>
                 </div>
@@ -130,12 +158,16 @@ export default function Lesson(props) {
               replace
             >
               <a>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                  <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                    <Headphones size={32} weight="fill" />
+                <div className={`${verifica(lesson?.lesson?.data?.id) ? 'bg-green-500 border-green-600 hover:bg-green-600' : 'hover:border-orange-is'} transition-all delay-75 flex border rounded-md items-center gap-1 px-4 py-6 `}>
+                  <div className={`rounded-full ${verifica(lesson?.lesson?.data?.id) ? ' text-white' : 'bg-orange-100 text-orange-is'} p-2 `}>
+                    {verifica(lesson?.lesson?.data?.id) ? (
+                      <CheckCircle size={32} color="#ffffff" weight="fill" />
+                    ): (
+                      <Headphones size={32} weight="bold" />
+                    )}
                   </div>
 
-                  <strong className="block text-gray-700 underline">
+                  <strong className={`${verifica(lesson?.lesson?.data?.id) ? 'text-white' : 'text-gray-700'} block `}>
                     {lesson?.lesson?.data?.attributes?.title}
                   </strong>
                 </div>
@@ -151,12 +183,16 @@ export default function Lesson(props) {
               replace
             >
               <a>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                  <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                    <Article size={32} weight="fill" />
+                <div className={`${verifica(lesson?.lesson?.data?.id) ? 'bg-green-500 border-green-600 hover:bg-green-600' : 'hover:border-orange-is'} transition-all delay-75 flex border rounded-md items-center gap-1 px-4 py-6 `}>
+                  <div className={`rounded-full ${verifica(lesson?.lesson?.data?.id) ? ' text-white' : 'bg-orange-100 text-orange-is'} p-2 `}>
+                    {verifica(lesson?.lesson?.data?.id) ? (
+                      <CheckCircle size={32} color="#ffffff" weight="fill" />
+                    ): (
+                      <File size={32} weight="bold" />
+                    )}
                   </div>
 
-                  <strong className="block text-gray-700 underline">
+                  <strong className={`${verifica(lesson?.lesson?.data?.id) ? 'text-white' : 'text-gray-700'} block `}>
                     {lesson?.lesson?.data?.attributes?.title}
                   </strong>
                 </div>
@@ -164,41 +200,6 @@ export default function Lesson(props) {
             </Link>
           )
         )}
-      {/* <Link href="#" className="group" key={lesson.lesson.data.id}>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                    <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                        <MonitorPlay size={32} weight="bold" />
-                    </div>
-                    <div className="">
-                        <strong className="text-gray-700 underline">
-                            Conteúdo em Vídeo
-                        </strong>
-                    </div>
-                </div>
-            </Link>
-
-            <Link href="#" className="group" key={lesson.lesson.data.id}>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                    <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                        <Headphones size={32} weight="fill" />
-                    </div>
-
-                    <strong className="block text-gray-700 underline">
-                        Conteúdo em Áudio
-                    </strong>
-                </div>
-            </Link>
-            <Link href="#" className="group" key={lesson.lesson.data.id}>
-                <div className="flex border rounded-md items-center gap-4 px-4 py-6 hover:border-orange-is">
-                    <div className="rounded-full bg-orange-100 p-2 text-orange-is">
-                        <Article size={32} weight="fill" />
-                    </div>
-
-                    <strong className="block text-gray-700 underline">
-                        Conteúdo em Artigo
-                    </strong>
-                </div>
-            </Link> */}
     </>
   );
 }

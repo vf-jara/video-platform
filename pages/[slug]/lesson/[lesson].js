@@ -3,10 +3,10 @@ import Video from "../../../components/Video";
 import Article from "../../../components/Article";
 import { useState } from "react";
 import { List,X } from "phosphor-react";
-import { cursoInfo, lessonInfo } from "../../../lib/api";
+import { cursoInfo, historico, lessonInfo } from "../../../lib/api";
 import { getSession } from "next-auth/react";
 
-export default function Player({slug, curso, lesson, type}) {
+export default function Player({slug, curso, lesson, type, session, historico}) {
     const [open, setOpen] = useState(false)
     return (
         <div className="flex flex-col min-h-screen">
@@ -32,24 +32,24 @@ export default function Player({slug, curso, lesson, type}) {
             {
                 type && (
                     type === "ComponentContentsVideoExternal" ? (
-                        <Video content={lesson} type={type} course={curso} />
+                        <Video content={lesson} type={type} course={curso} session={session} />
                     ) : type === "ComponentContentsVideoLocal" ? (
-                        <Video content={lesson} type={type} course={curso} />
+                        <Video content={lesson} type={type} course={curso} session={session} />
                     ) : type === "ComponentContentsArticle" ? (
-                        <Article content={lesson} course={curso} />
+                        <Article content={lesson} course={curso} session={session} />
                     ) : type === "ComponentContentsImage" ? (
-                        <Article content={lesson} course={curso} />
+                        <Article content={lesson} course={curso} session={session} />
                     ) : type === "ComponentContentsPdf" ? (
-                        <Article content={lesson} course={curso} />
+                        <Article content={lesson} course={curso} session={session} />
                     ) : type === "ComponentContentsAudio" ? (
-                        <Video content={lesson} type={type} course={curso} />
+                        <Video content={lesson} type={type} course={curso} session={session} />
                     ) : (
                         <></>
                     )
                 )
             }
                 <div className={`lg:flex absolute lg:static lg:z-auto lg:w-auto lg:h-auto ${open ? 'flex right-0 min-h-screen bg-white z-40' : 'hidden'} transition-all ease-in-out duration-500`}>
-                    <Sidebar lessons={curso[0]?.attributes?.contents} course={slug} />
+                    <Sidebar lessons={curso[0]?.attributes?.contents} course={slug} courseId={curso[0].id} session={session} historico={historico} />
                 </div>
             </div>
         </div>
@@ -75,10 +75,17 @@ export async function getServerSideProps({req, query }){
         }
         const course = await cursoInfo(session, slug);
         const l = await lessonInfo(session, lesson);
+        let arrHistorico = [];
+        await historico(session, course?.data?.courses?.data[0]?.id).then((hist) => {
+            hist.map((h) => {
+                arrHistorico.push(h?.attributes?.lesson?.data?.id);
+            });
+        });
         return {
             props: {
                 session,
                 slug,
+                historico: arrHistorico,
                 curso: course?.data?.courses?.data || [],
                 lesson: l?.data?.lessons?.data[0] || [],
                 type: l?.data?.lessons?.data[0]?.attributes?.content[0]?.__typename || ""

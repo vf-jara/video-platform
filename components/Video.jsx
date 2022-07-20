@@ -1,15 +1,12 @@
 
-import { FolderOpen } from "phosphor-react";
 import Link from "next/link";
 import Img from "react-cool-img";
 import Plyr from "plyr-react";
 import "plyr-react/dist/plyr.css"
-import React, { useRef } from "react";
+import React, { useCallback } from "react";
 import MateriaisComplementares from "./MateriaisComplementares";
 
-
-export default function Video({ content, type, course }) {
-    const playerRef = useRef();
+export default function Video({ content, type, course, session }) {
     let plyrProps;
     if (type === "ComponentContentsVideoExternal") {
         plyrProps = {
@@ -75,6 +72,20 @@ export default function Video({ content, type, course }) {
             "fullscreen"
         ]
     };
+
+    const playerRef = useCallback( node => {
+        if (node !== null) {
+            if(node?.plyr?.on){
+                node?.plyr?.on("play", (event) => {
+                    console.log("Play");
+                });
+                node?.plyr?.on("ended", (event) => {
+                    console.log("Fim");
+                });
+            }
+        }
+    }, []);
+
     return (
         <div className="flex-1 bg-slate-100">
             <div className="flex">

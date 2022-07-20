@@ -28,15 +28,15 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
           >
             <Header name={session.user.fullName} email={session.user.email} isActive={isActive} />
             <div className="md:w-2/3 2xl:flex 2xl:flex-col 2xl:justify-center px-8 md:px-20 2xl:h-[55vh] pt-8 2xl:pt-0">
-              <h1 className="text-white font-bold text-5xl md:text-6xl pb-4">
+              <h1 className="text-white font-bold text-5xl md:text-6xl pb-4 fadeInUp">
                 {homepageInfo?.heroTitle || "[Hero Title] As bases da IS"}
               </h1>
-              <p className="text-white text-base md:text-lg lg:text-xl py-5 lg:w-4/5 mb-12">
+              <p className="text-white text-base md:text-lg lg:text-xl py-5 lg:w-4/5 mb-12 fadeInUp delay-200">
                 {homepageInfo?.heroDescription ||
                   "[Hero Description] Lorem Ipsum"}
               </p>
               <button
-                className="text-base flex 2xl:w-1/4 align-middle ease-in-out hover:-translate-y-1 hover:scale-105 duration-300 text-white px-10 pt-[16px] pb-[17px] bg-orange-is hover:bg-white hover:text-orange-is justify-center rounded-md font-medium"
+                className="delay-600 fadeIn text-base flex 2xl:w-1/4 align-middle ease-in-out hover:-translate-y-1 hover:scale-105 duration-300 text-white px-10 pt-[16px] pb-[17px] bg-orange-is hover:bg-white hover:text-orange-is justify-center rounded-md font-medium"
                 onClick={() => {
                   router.push(homepageInfo?.heroButtonLink || "/");
                 }}

@@ -4,11 +4,10 @@ import Link from "next/link";
 import Img from "react-cool-img";
 import Plyr from "plyr-react";
 import "plyr-react/dist/plyr.css"
-import React, { useRef } from "react";
+import React, { useEffect, useCallback } from "react";
 
 
 export default function Video({ content, type, course }) {
-    const playerRef = useRef();
     let plyrProps;
     if (type === "ComponentContentsVideoExternal") {
         plyrProps = {
@@ -74,6 +73,37 @@ export default function Video({ content, type, course }) {
             "fullscreen"
         ]
     };
+
+    const playerRef = useCallback( node => {
+        if (node !== null) {
+          console.log("Ref:", node.plyr);
+            if(node.plyr){
+                node?.plyr?.on("play", (event) => {
+                    console.log("playing-event");
+                });
+                node?.plyr?.on("ended", (event) => {
+                    console.log("ended-event");
+                });
+            }
+        }
+    }, []);
+
+
+    // useEffect(() => {
+    //     document.addEventListener('DOMContentLoaded', () => {
+    //         playerRef?.current?.plyr?.on("playing", (event) => {
+    //             console.log("playing-event");
+    //         })
+    //         const player = new Plyr('#player', {
+    //          // player options
+    //          });
+
+    //         player.on('playing', event => {
+    //             console.log("player");
+    //          });
+    //     });
+        
+    //   }, [])
     return (
         <div className="flex-1 bg-slate-100">
             <div className="flex">

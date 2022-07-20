@@ -5,6 +5,7 @@ import Img from "react-cool-img";
 import Plyr from "plyr-react";
 import "plyr-react/dist/plyr.css"
 import React, { useRef } from "react";
+import MateriaisComplementares from "./MateriaisComplementares";
 
 
 export default function Video({ content, type, course }) {
@@ -109,10 +110,7 @@ export default function Video({ content, type, course }) {
                                 </h1>
                             </div>
                             <div className="flex md:justify-end">
-                                <a href="" className="p-4 md:w-2/3 my-4 text-sm bg-purple-is text-white flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-is transition-colors">
-                                    <FolderOpen size={24} />
-                                    Materiais Complementares
-                                </a>
+                                <MateriaisComplementares />
                             </div>
 
                         </div>

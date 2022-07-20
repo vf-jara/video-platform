@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FolderOpen } from "phosphor-react";
 import Img from "react-cool-img";
 import dynamic from 'next/dynamic';
+import MateriaisComplementares from "./MateriaisComplementares";
 
 
 
@@ -10,6 +11,7 @@ export default function Article({ content, course }) {
         async () => (await import('editorjs-react-renderer')).default,
         { ssr: false }
     );
+
     return (
         <div className="flex-1 bg-slate-100">
             <div className="flex">
@@ -25,7 +27,7 @@ export default function Article({ content, course }) {
                     </Link>
                 </div>
                 <div className="bg-green-is flex flex-1 items-center pl-5 text-white font-bold">
-                {course[0]?.attributes?.title}
+                    {course[0]?.attributes?.title}
                 </div>
             </div>
 
@@ -39,10 +41,7 @@ export default function Article({ content, course }) {
                                 </h1>
                             </div>
                             <div className="flex md:justify-end">
-                                <a href="" className="p-4 md:w-2/3 my-4 text-sm bg-purple-is text-white flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-is transition-colors">
-                                    <FolderOpen size={24} />
-                                    Materiais Complementares
-                                </a>
+                                <MateriaisComplementares />
                             </div>
                         </div>
                         <div className="article-view">

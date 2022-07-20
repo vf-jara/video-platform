@@ -104,6 +104,7 @@ body {
   animation-name: fadeIn;
   animation-duration: 2s;
   animation-fill-mode: both;
+  animation-delay: 700ms;
 }
 
 

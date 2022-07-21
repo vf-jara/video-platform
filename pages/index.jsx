@@ -1,4 +1,4 @@
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
@@ -139,7 +139,11 @@ export default function Home({ session, courses, homepageInfo, isActive }) {
 
 export const getServerSideProps = async ({ req }) => {
   const session = await getSession({ req });
-  // console.log("\n\n\nSession:", session);
+  let d1 = new Date();
+  let d2 = new Date(session.expires);
+  if(d1 > d2){
+    signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login?error=notauthorized` })
+  }
   if (!session) {
     return {
       redirect: {

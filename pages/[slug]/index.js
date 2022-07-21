@@ -2,7 +2,7 @@ import Sidebar from "../../components/Sidebar";
 import { useState } from "react";
 import { List,X } from "phosphor-react";
 import { cursoInfo, lessonHistoric } from "../../lib/api";
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 
 export default function Player({slug, curso}) {
     const [open, setOpen] = useState(false)
@@ -38,6 +38,11 @@ export default function Player({slug, curso}) {
 export async function getServerSideProps({req, query }){
     const {slug} = query;
     const session = await getSession({ req });
+    let d1 = new Date();
+    let d2 = new Date(session.expires);
+    if(d1 > d2){
+        signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login?error=notauthorized` })
+    }
     if (!session) {
         return {
             redirect: {

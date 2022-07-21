@@ -4,7 +4,7 @@ import Article from "../../../components/Article";
 import { useState } from "react";
 import { List,X } from "phosphor-react";
 import { cursoInfo, historico, lessonInfo } from "../../../lib/api";
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 
 export default function Player({slug, curso, lesson, type, session, historico}) {
     const [open, setOpen] = useState(false)
@@ -59,6 +59,11 @@ export default function Player({slug, curso, lesson, type, session, historico}) 
 export async function getServerSideProps({req, query }){
     const {slug, lesson} = query;
     const session = await getSession({ req });
+    let d1 = new Date();
+    let d2 = new Date(session.expires);
+    if(d1 > d2){
+        signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login?error=notauthorized` })
+    }
     if (!session) {
         return {
             redirect: {

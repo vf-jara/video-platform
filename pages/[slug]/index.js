@@ -59,8 +59,6 @@ export async function getServerSideProps({req, query }){
         for (const conteudo of conteudos) {
             let h = await lessonHistoric(session, conteudo?.lesson?.data?.id, course?.data?.courses?.data[0]?.id);
             if(h?.data?.lessonHistorics?.meta?.pagination?.total === 0){
-                console.log("H: ", h?.data?.lessonHistorics?.meta?.pagination?.total );
-                console.log("\nNão tem histórico\n");
                 verifica = true;
                 conteudoEnviado = conteudo?.lesson?.data?.attributes?.slug;
                 break;

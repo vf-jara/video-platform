@@ -75,7 +75,6 @@ export default function SliderPadrao({ cursos }) {
     }
     return (
         <>
-
             <Slider {...settings}>
                 {cursos?.map((curso) => (
                     <div key={curso.id} >
@@ -93,8 +92,8 @@ export default function SliderPadrao({ cursos }) {
                         <X size={30} weight="bold" className="" />
                     </button>
                     <div className="flex gap-x-3 md:gap-x-10 py-5">
-                        <div className="min-w-[30%]">
-                            <Img
+                        <div className="min-w-[100px] max-w-[150px]">
+                            <Img className="object-contain"
                                 src={info?.image}
                             />
                         </div>
@@ -113,8 +112,6 @@ export default function SliderPadrao({ cursos }) {
                     </div>
                 </div>
             </div>
-
-
         </>
     );
 }

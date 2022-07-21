@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Img from "react-cool-img";
 import Slider from "react-slick";
-import { Play, X } from "phosphor-react";
+import { ArrowRight, Play, X } from "phosphor-react";
 
 export default function SliderPadrao({ cursos }) {
     const [modalOpen, setOpen] = useState(false)
@@ -80,15 +80,15 @@ export default function SliderPadrao({ cursos }) {
             <Slider {...settings}>
                 {cursos?.map((curso) => (
                     <div key={curso.id} >
-                            <div className="px-3 outline-none cursor-pointer" onClick={() => abrirModal(curso.attributes.title, curso.attributes.description, curso.attributes.slug, curso?.attributes?.coverV?.data?.attributes?.url)}>
-                                <Img className="rounded-lg card-course"
-                                    src={curso?.attributes?.coverV?.data?.attributes?.url}
-                                />
-                            </div>
+                        <div className="px-3 outline-none cursor-pointer" onClick={() => abrirModal(curso.attributes.title, curso.attributes.description, curso.attributes.slug, curso?.attributes?.coverV?.data?.attributes?.url)}>
+                            <Img className="rounded-lg card-course"
+                                src={curso?.attributes?.coverV?.data?.attributes?.url}
+                            />
+                        </div>
                     </div>
                 ))}
             </Slider>
-            <div id="modal-course" className={`fixed lg:p-10 top-0 left-0 bottom-0  right-0 justify-center w-full h-full flex items-end md:items-center md:justify-center ${modalOpen ? 'fadeInModal' : 'fadeOutModal'} ${!click ? 'hidden' : ''} backdrop-blur`}>
+            <div id="modal-course" className={`fixed lg:p-10 top-0 left-0 bottom-0  right-0 justify-center w-full h-full flex items-end md:items-center md:justify-center ${modalOpen ? 'fadeInModal' : 'fadeOutModal'} ${!click ? 'hidden' : ''} lg:backdrop-blur`}>
                 <div className="bg-zinc-900 rounded-lg p-6 relative min-w-[50%] max-w-3xl">
                     <button onClick={() => setOpen(!modalOpen)} className="absolute top-5 right-5 text-white">
                         <X size={30} weight="bold" className="" />
@@ -102,15 +102,18 @@ export default function SliderPadrao({ cursos }) {
                         <div className="flex flex-col w-full">
                             <h2 className="text-lg md:text-3xl text-white mb-3">{info?.title}</h2>
                             <p className="text-white opacity-75 text-sm md:text-lg mb-8">{info?.description}</p>
-                            <Link href={`/${info?.link}`}>
-                                <a>
-                                    <div className="p-4 flex text-white text-lg rounded-lg gap-3 bg-orange-is hover:bg-orange-hv-is transition-colors lg:w-2/5 justify-center">
-                                        <p>Assistir</p>
-                                        <Play size={24} weight="fill"/>
-                                    </div>
-                                </a>
-                            </Link>
+
                         </div>
+                    </div>
+                    <div className="">
+                        <Link href={`/${info?.link}`}>
+                            <a>
+                                <div className="p-4 flex text-white text-base rounded-lg gap-3 bg-orange-is hover:bg-orange-hv-is transition-colors lg:w-2/5 justify-center items-center">
+                                    <p>Ver conteúdo</p>
+                                    <ArrowRight size={20} weight="bold" />
+                                </div>
+                            </a>
+                        </Link>
                     </div>
                 </div>
             </div>

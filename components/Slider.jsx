@@ -88,7 +88,7 @@ export default function SliderPadrao({ cursos }) {
                     </div>
                 ))}
             </Slider>
-            <div id="modal-course" className={`fixed lg:p-10 top-0 left-0 bottom-0 right-0 w-full h-full flex items-end md:items-center md:justify-center ${modalOpen ? 'fadeInModal' : 'fadeOutModal'} ${!click ? 'hidden' : ''} backdrop-blur`}>
+            <div id="modal-course" className={`fixed lg:p-10 top-0 left-0 bottom-0  right-0 justify-center w-full h-full flex items-end md:items-center md:justify-center ${modalOpen ? 'fadeInModal' : 'fadeOutModal'} ${!click ? 'hidden' : ''} backdrop-blur`}>
                 <div className="bg-zinc-900 rounded-lg p-6 relative min-w-[50%] max-w-3xl">
                     <button onClick={() => setOpen(!modalOpen)} className="absolute top-5 right-5 text-white">
                         <X size={30} weight="bold" className="" />

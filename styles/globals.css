@@ -107,6 +107,22 @@ body {
   animation-delay: 700ms;
 }
 
+@media (max-width: 768px) {
+  #modal-course.fadeInModal{
+    animation-name: fadeInModalMobile;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+  }
+  
+  #modal-course.fadeOutModal{
+    animation-name: fadeOutModalMobile;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+  }
+  
+}
+
+@media (min-width: 769px) {
 #modal-course.fadeInModal{
   animation-name: fadeInModal;
   animation-duration: .5s;
@@ -119,13 +135,6 @@ body {
   animation-fill-mode: both;
 }
 
-#modal-course.modalHidden{
-  display: none;
-}
-
-#modal-course.modalHidden.fadeOutModal,
-#modal-course.modalHidden.fadeInModal{
-  display: flex;
 }
 
 
@@ -167,6 +176,29 @@ body {
   }
   100% {
     opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeInModalMobile {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeOutModalMobile {
+  0% {
+    opacity: inherit;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
     visibility: hidden;
   }
 }

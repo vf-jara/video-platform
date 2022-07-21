@@ -7,6 +7,7 @@ import MateriaisComplementares from "./MateriaisComplementares";
 
 
 export default function Article({ content, course }) {
+
     const Output = dynamic(
         async () => (await import('editorjs-react-renderer')).default,
         { ssr: false }
@@ -30,7 +31,6 @@ export default function Article({ content, course }) {
                     {course[0]?.attributes?.title}
                 </div>
             </div>
-
             <div className="p-8 max-w-[1100px] bg-white mx-auto shadow-lg">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
                     <div className="flex-1 flex-col">

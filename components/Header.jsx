@@ -71,7 +71,7 @@ export default function Header({name, email, isActive}) {
                                 leaveFrom="transform opacity-100 scale-100"
                                 leaveTo="transform opacity-0 scale-95"
                             >
-                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white dark:bg-gray-900  focus:outline-none">
+                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md z-[900] shadow-lg bg-white dark:bg-gray-900  focus:outline-none">
                                     <div className="py-1">
                                         {
                                             Links.map((link) => (

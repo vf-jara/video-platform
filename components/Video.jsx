@@ -73,9 +73,9 @@ export default function Video({ content, type, course, session }) {
         ]
     };
 
-    const playerRef = useCallback( node => {
+    const playerRef = useCallback(node => {
         if (node !== null) {
-            if(node?.plyr?.on){
+            if (node?.plyr?.on) {
                 node?.plyr?.on("play", (event) => {
                     console.log("Play");
                 });
@@ -89,13 +89,13 @@ export default function Video({ content, type, course, session }) {
     return (
         <div className="flex-1 bg-slate-100">
             <div className="flex">
-                <div className="py-5 px-7 bg-purple-is">
+                <div className="py-5 bg-purple-is">
                     <Link href="/">
                         <a>
                             <Img
                                 src="/assets/images/logo-h.png"
                                 alt="Logo IS com Ciência"
-                                className="w-1/2 md:w-auto"
+                                className="max-h-5 md:max-h-full mx-4"
                             />
                         </a>
                     </Link>

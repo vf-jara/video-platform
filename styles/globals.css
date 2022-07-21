@@ -107,6 +107,28 @@ body {
   animation-delay: 700ms;
 }
 
+#modal-course.fadeInModal{
+  animation-name: fadeInModal;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+}
+
+#modal-course.fadeOutModal{
+  animation-name: fadeOutModal;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+}
+
+#modal-course.modalHidden{
+  display: none;
+}
+
+#modal-course.modalHidden.fadeOutModal,
+#modal-course.modalHidden.fadeInModal{
+  display: flex;
+}
+
+
 
 @keyframes fadeInUp {
   0% {
@@ -124,5 +146,27 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeInModal {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible !important;
+    display: flex;
+  }
+}
+
+@keyframes fadeOutModal {
+  0% {
+    opacity: inherit;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
   }
 }

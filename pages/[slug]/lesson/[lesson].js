@@ -19,7 +19,7 @@ export default function Player({ slug, curso, lesson, type, session, historico }
             }}>
             <div className="flex flex-col min-h-screen">
                 <div className="absolute z-50 top-3 right-4 lg:hidden">
-                    <button onClick={() => setOpen(!open)}>
+                    <button onClick={(e) => {e.preventDefault(); setOpen(!open)}}>
                         {
                             !open ?
                                 <List

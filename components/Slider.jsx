@@ -89,8 +89,8 @@ export default function SliderPadrao({ cursos }) {
                 ))}
             </Slider>
             <div id="modal-course" className={`fixed lg:p-10 top-0 left-0 bottom-0  right-0 justify-center w-full h-full flex items-end md:items-center md:justify-center ${modalOpen ? 'fadeInModal' : 'fadeOutModal'} ${!click ? 'hidden' : ''} lg:backdrop-blur`}>
-                <div className="bg-zinc-900 rounded-lg p-6 relative min-w-[50%] max-w-3xl">
-                    <button onClick={() => setOpen(!modalOpen)} className="absolute top-5 right-5 text-white">
+                <div className="dark:bg-gray-900 bg-slate-50 rounded-sm p-6 relative min-w-[50%] max-w-3xl">
+                    <button onClick={() => setOpen(!modalOpen)} className="absolute top-5 right-5 text-zinc-800 dark:text-white">
                         <X size={30} weight="bold" className="" />
                     </button>
                     <div className="flex gap-x-3 md:gap-x-10 py-5">
@@ -100,8 +100,8 @@ export default function SliderPadrao({ cursos }) {
                             />
                         </div>
                         <div className="flex flex-col w-full">
-                            <h2 className="text-lg md:text-3xl text-white mb-3">{info?.title}</h2>
-                            <p className="text-white opacity-75 text-sm md:text-lg mb-8">{info?.description}</p>
+                            <h2 className="text-lg md:text-3xl text-zinc-900 dark:text-white mb-3">{info?.title}</h2>
+                            <p className="text-zinc-900 dark:text-white opacity-75 text-sm md:text-lg mb-8">{info?.description}</p>
 
                         </div>
                     </div>

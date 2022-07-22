@@ -4,8 +4,10 @@ import Link from 'next/link'
 import { Fragment, useEffect, useState } from "react";
 import { MagnifyingGlass, BellSimple, UserCircle, List, SignOut } from "phosphor-react";
 import { Menu, Transition } from '@headlessui/react'
+import { useRouter } from "next/router";
 
 export default function Header({name, email, isActive}) {
+    const router = useRouter();
     const [alertNotification, setAlertNotification] = useState(0);
     const Links = [
         { name: "Home", link: "/", id: 1 },
@@ -15,7 +17,7 @@ export default function Header({name, email, isActive}) {
     ];
 
     const accountMenu = [
-        { text: "Minha Conta", link: "#", id: 1, icon: ''},
+        { text: "Minha Conta", link: "/account", id: 1, icon: ''},
     ];
 
     const notifications = [
@@ -231,6 +233,7 @@ export default function Header({name, email, isActive}) {
                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 dark:text-white ',
                                                             'inline-flex justify-center w-full px-4 py-2 text-base text-center rounded-md transition-all mb-2 last:mb-0'
                                                         )}
+                                                        onClick={() => {router.push(`/${link.link}`)}}
                                                     >
                                                         {link.text}{" "}{link.icon}
                                                     </button>

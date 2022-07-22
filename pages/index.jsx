@@ -13,15 +13,15 @@ export default function Home({ session, courses, homepageInfo, isActive, userPro
     return (
       <>
         <ProductContext.Provider
-            value={{
-                state: {
-                  session,
-                  courses,
-                  homepageInfo,
-                  isActive,
-                  userProducts
-                }
-            }}>
+          value={{
+            state: {
+              session,
+              courses,
+              homepageInfo,
+              isActive,
+              userProducts
+            }
+          }}>
           <Head>
             <title>{homepageInfo?.seoTitle || "Dashboard"}</title>
             <meta
@@ -160,14 +160,14 @@ export const getServerSideProps = async ({ req }) => {
   } else {
     if (!session?.user?.subscriptionActive) {
       return {
-          redirect: {
-              destination: '/'
-          }
+        redirect: {
+          destination: '/'
+        }
       }
     }
     let d1 = new Date();
     let d2 = new Date(session.expires);
-    if(d1 > d2){
+    if (d1 > d2) {
       signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login?error=notauthorized` })
     }
     const arrProducts = [];

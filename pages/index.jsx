@@ -171,7 +171,7 @@ export const getServerSideProps = async ({ req }) => {
       signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login?error=notauthorized` })
     }
     const arrProducts = [];
-    session?.user?.products.map((p) => {
+    session?.user?.products?.map((p) => {
       arrProducts.push(p?.id);
     })
     const home = await homeInfo(session);

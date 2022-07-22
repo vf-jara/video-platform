@@ -1,6 +1,7 @@
 import Sidebar from "../../../components/Sidebar";
 import Video from "../../../components/Video";
 import Article from "../../../components/Article";
+import Audio from "../../../components/Audio";
 import { useState } from "react";
 import { List, X } from "phosphor-react";
 import { cursoInfo, historico, lessonInfo } from "../../../lib/api";
@@ -50,7 +51,7 @@ export default function Player({ slug, curso, lesson, type, session, historico }
                             ) : type === "ComponentContentsPdf" ? (
                                 <Article content={lesson} course={curso} session={session} />
                             ) : type === "ComponentContentsAudio" ? (
-                                <Video content={lesson} type={type} course={curso} session={session} />
+                                <Audio content={lesson} type={type} course={curso} session={session} />
                             ) : (
                                 <></>
                             )

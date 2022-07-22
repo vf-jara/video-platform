@@ -75,20 +75,22 @@ export default function Header({name, email, isActive}) {
                             >
                                 <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md z-[900] shadow-lg bg-white dark:bg-gray-900  focus:outline-none">
                                     <div className="py-1">
-                                        {
-                                            Links.map((link) => (
+                                    {
+                                            accountMenu.map((link) => (
                                                 <Menu.Item key={link.id}>
-                                                    {({ active }) => (
-                                                        <button className={classNames(
-                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 dark:text-white',
-                                                            'block w-full px-4 py-2 text-base text-center'
-                                                        )}>
-                                                            <Link href={link.link}>
-                                                                <a>{link.name}</a>
-                                                            </Link>
-                                                        </button>
-                                                    )}
-                                                </Menu.Item>
+                                                {({ active }) => (
+                                                    <button
+                                                        type="submit"
+                                                        className={classNames(
+                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 dark:text-white ',
+                                                            'inline-flex justify-center w-full px-4 py-2 text-base text-center rounded-md transition-all mb-2 last:mb-0'
+                                                        )}
+                                                        onClick={() => {router.push(`/${link.link}`)}}
+                                                    >
+                                                        {link.text}{" "}{link.icon}
+                                                    </button>
+                                                )}
+                                            </Menu.Item>
                                             ))
                                         }
                                         <hr className="w-4/5 m-auto"></hr>

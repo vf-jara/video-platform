@@ -66,18 +66,18 @@ export default function Account({ session, userProducts, isActive }) {
           </h1>
           <div className="flex flex-row gap-4">
             <div className="flex flex-col p-4 bg-slate-800 w-64 rounded-md justify-between">
-              <h2 className="text-lg dark:text-white text-slate-800 pb-4">
+              <h2 className="text-lg text-white  pb-4">
                 Seus créditos restantes:
               </h2>
-              <p className="text-5xl dark:text-white text-slate-800 font-bold">
+              <p className="text-5xl text-white  font-bold">
                 5 <span className="text-lg font-normal">créditos</span>
               </p>
             </div>
             <div className="flex flex-col p-4 bg-slate-800 w-64 rounded-md justify-between">
-              <h2 className="text-lg dark:text-white text-slate-800 pb-4">
+              <h2 className="text-lg text-white  pb-4">
                 Conteúdos consumidos este mês:
               </h2>
-              <p className="text-5xl dark:text-white text-slate-800 font-bold">
+              <p className="text-5xl text-white  font-bold">
                 0 <span className="text-lg font-normal">conteúdos</span>
               </p>
             </div>

@@ -161,7 +161,7 @@ export const getServerSideProps = async ({ req }) => {
     if (!session?.user?.subscriptionActive) {
       return {
         redirect: {
-          destination: '/'
+          destination: '/account'
         }
       }
     }

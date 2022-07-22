@@ -5,6 +5,7 @@ import Plyr from "plyr-react";
 import "plyr-react/dist/plyr.css"
 import React, { useCallback } from "react";
 import MateriaisComplementares from "./MateriaisComplementares";
+import MarkAsViewed from "./MarkAsViewed";
 
 export default function Video({ content, type, course, session }) {
     let plyrProps;
@@ -120,7 +121,8 @@ export default function Video({ content, type, course, session }) {
                                     {content?.attributes?.title}
                                 </h1>
                             </div>
-                            <div className="flex md:justify-end">
+                            <div className="flex flex-col md:flex-row gap-2 my-4 md:justify-end">
+                                <MarkAsViewed/>
                                 <MateriaisComplementares />
                             </div>
 

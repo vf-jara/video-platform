@@ -31,7 +31,7 @@ export default function MateriaisComplementares(props) {
         <div>
             <Menu as="div" className="relative">
                 <div className="flex">
-                    <Menu.Button className="p-4 my-4 text-sm bg-purple-is text-white flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-is transition-colors">
+                    <Menu.Button className="p-4 text-sm border-2 border-purple-is hover:border-blue-is bg-purple-is text-white flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-is transition-colors">
                         <FolderOpen size={24} />
                         Materiais Complementares
                     </Menu.Button>

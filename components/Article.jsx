@@ -3,6 +3,7 @@ import { FolderOpen } from "phosphor-react";
 import Img from "react-cool-img";
 import dynamic from 'next/dynamic';
 import MateriaisComplementares from "./MateriaisComplementares";
+import MarkAsViewed from "./MarkAsViewed";
 
 
 
@@ -40,7 +41,8 @@ export default function Article({ content, course }) {
                                     {content?.attributes?.title}
                                 </h1>
                             </div>
-                            <div className="flex md:justify-end">
+                            <div className="flex flex-col md:flex-row gap-2 my-4 md:justify-end">
+                                <MarkAsViewed />
                                 <MateriaisComplementares />
                             </div>
                         </div>

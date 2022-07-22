@@ -22,7 +22,27 @@ const options = {
           });
 
           if (data) {
-            return data;
+            const jwt = data.jwt;
+            const headers = {
+                "content-type": "application/json",
+                "Authorization": `Bearer ${jwt}`
+            };
+            const infoUser = await axios({
+              url: `${process.env.CMS_URL}/api/users/me`,
+              method: 'get',
+              headers: headers
+            }).then((res) => { return res.data;});
+
+            if(infoUser){
+              const mount = {
+                user: data.user,
+                full: infoUser,
+                jwt: data.jwt,
+              }
+              return mount;
+            }else{
+              return data;
+            }
           }else {
             return null;
           }
@@ -40,7 +60,7 @@ const options = {
         return {
           ...token,
           accessToken: user.jwt,
-          userData: user.user,
+          userData: user.full,
         };
       }
       return token

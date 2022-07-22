@@ -38,11 +38,6 @@ export default function Player({slug, curso}) {
 export async function getServerSideProps({req, query }){
     const {slug} = query;
     const session = await getSession({ req });
-    let d1 = new Date();
-    let d2 = new Date(session.expires);
-    if(d1 > d2){
-        signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login?error=notauthorized` })
-    }
     if (!session) {
         return {
             redirect: {
@@ -56,6 +51,11 @@ export async function getServerSideProps({req, query }){
                     destination: '/'
                 }
             }
+        }
+        let d1 = new Date();
+        let d2 = new Date(session.expires);
+        if(d1 > d2){
+            signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}/login?error=notauthorized` })
         }
         const course = await cursoInfo(session, slug);
         let conteudoEnviado = '';

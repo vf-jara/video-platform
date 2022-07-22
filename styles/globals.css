@@ -84,6 +84,14 @@ body {
 }
 
 /* Animations */
+.lock-bg{
+  filter: grayscale(1);
+}
+.lock-icon{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 .card-course{
   transform: scale(0.9);
   transition: all .5s;

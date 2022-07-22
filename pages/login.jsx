@@ -26,6 +26,7 @@ export default function Login() {
           // setLoading(false);
         } else {
           setError("invalid");
+          setLoading(false);
         }
       });
   };
